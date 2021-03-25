@@ -1,0 +1,14 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+    <label class="text-light" for="username">Username</label>
+    <input type="username" class="form-control" id="username" placeholder="Inserisci un nome utente" type="text" formControlName="username" required>
+
+    <label class="text-light" for="password">Password</label>
+    <input #pwd type="password" class="form-control" id="password" placeholder="Inserisci la tua password" type="password" formControlName="password" required>
+
+    <label class="text-light" for="confirmPassword">Confirm Password</label>
+    <input #confirmPwd type="password" class="form-control" id="confirmPassword" placeholder="Conferma la password" type="password" formControlName="confirmPassword" required>
+
+  <button type="submit" class="btn btn-primary">Register</button>
+
+</form>
