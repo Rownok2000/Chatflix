@@ -6,6 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { SocketService } from './socket.service';
+
+
+const config: SocketIoConfig = { url: 'https://3100-jade-dog-9k1p1loc.ws-eu03.gitpod.io', options: {} };
+
 
 @NgModule({
   declarations: [
@@ -18,9 +24,10 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SocketIoModule.forRoot(config),
   ],
-  providers: [],
+  providers: [SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
