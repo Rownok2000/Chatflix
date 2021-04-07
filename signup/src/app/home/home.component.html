@@ -1,6 +1,86 @@
-<input  (keyup)="$event.keyCode == 13 && sendMessage(message)" #message/>
-<button (click)="sendMessage(message)">Send Message</button>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- Load icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div *ngFor = "let message of messageList">
-  {{utente}}:<br>{{message}}
+
+</head>
+<style>
+  body {
+		background-color:red;
+  
+  }
+  
+  .container-fluid{
+		background-color:white;
+		width:40%;
+		height:150px;
+		margin-left:15px;
+		
+  }
+  button{
+		background-color:lightgreen;
+  
+  }
+  
+ 
+</style>
+<body>
+<h1 class=" text-center" style="font-size:60px;">Chatflix</h1>
+
+<nav class="nav nav-pills nav-justified bg-warning navbar-dark ">
+	
+	<li class="nav-item ">
+      <b><a class="nav-link" style="font-size:25px; color: black;" href="/grafico">Home</a></b>
+    </li>
+	
+   
+	
+    <li class="nav-item">
+      <b><a class="nav-link " style="font-size:25px; color: black;" href="/relazione">Crea Gruppo</a></b>
+    </li>
+	
+    <li class="nav-item ">
+      <b><a class="nav-link" style="font-size:25px; color: black;" href="/grafico">Grafico</a></b>
+    </li>
+	
+	<li class="nav-item ">
+      <b><a class="nav-link" style="font-size:25px; color: black;" href="/grafico">I miei gruppi</a></b>
+    </li>
+	
+	 <li class="nav-item active ">
+      
+  <input style="font-size:20px" type="text" placeholder="Ricerca" name="search">
+  <button type="submit"><i class="fa fa-search" style="font-size:25px"></i></button></b>
+    </li>
+
+</nav>
+<br>
+<div class="container-fluid">
+  <h1>My First Bootstrap Page</h1><button type="button">Join</button>
+  
+  <p>This is some text.</p>
 </div>
+<br>
+<div class="container-fluid">
+  <h1>My First Bootstrap Page</h1> <button type="button">Join</button>
+  
+  <p>This is some text.</p>
+</div>
+<br>
+<div class="container-fluid">
+  <h1>My First Bootstrap Page</h1> <button type="button">Join</button>
+  
+  <p>This is some text.</p>
+</div>
+
+
+ </body>
+ 
+ <html>

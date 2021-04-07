@@ -8,16 +8,20 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { SocketService } from './socket.service';
+import { LoginComponent } from './login/login.component';
+import { ChatgroupComponent } from './chatgroup/chatgroup.component';
 
 
-const config: SocketIoConfig = { url: 'https://3100-copper-bat-gp1asq99.ws-eu03.gitpod.io', options: {} };
+const config: SocketIoConfig = { url: 'https://3100-emerald-grasshopper-umtsyvma.ws-eu03.gitpod.io', options: {} };
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    ChatgroupComponent
   ],
   imports: [
     BrowserModule,
