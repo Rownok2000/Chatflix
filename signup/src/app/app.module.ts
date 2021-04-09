@@ -9,10 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { SocketService } from './socket.service';
 import { LoginComponent } from './login/login.component';
-import { ChatgroupComponent } from './chatgroup/chatgroup.component';
 
-
-const config: SocketIoConfig = { url: 'https://3100-emerald-grasshopper-umtsyvma.ws-eu03.gitpod.io', options: {} };
+const config: SocketIoConfig = { url: 'https://3100-red-salmon-73w2i8w3.ws-eu03.gitpod.io', options: {} };
 
 
 @NgModule({
@@ -20,9 +18,8 @@ const config: SocketIoConfig = { url: 'https://3100-emerald-grasshopper-umtsyvma
     AppComponent,
     RegisterComponent,
     HomeComponent,
-    LoginComponent,
-    ChatgroupComponent
-  ],
+    LoginComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
