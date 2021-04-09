@@ -12,6 +12,7 @@ const cors = require('cors')
 
 var indexRouter = require('./routes/index');
 var registerRouter = require('./routes/register');
+var loginRouter = require('./routes/login');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(bodyParser.json());
 
 app.use('/', indexRouter);
 app.use('/register', registerRouter);
+app.use('/login', loginRouter);
 
 const server = app.listen(port, () => {
   console.log(`Server connection on  http://127.0.0.1:${port}`);  // Server Connnected
