@@ -10,7 +10,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { SocketService } from './socket.service';
 import { LoginComponent } from './login/login.component';
 
-const config: SocketIoConfig = { url: 'https://3100-gray-gayal-u6i67giz.ws-eu03.gitpod.io', options: {} };
+const config: SocketIoConfig = { url: 'https://3100-magenta-wildcat-qmibeni5.ws-eu03.gitpod.io', options: {} };
 
 
 @NgModule({

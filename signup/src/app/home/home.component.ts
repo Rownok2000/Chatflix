@@ -8,7 +8,7 @@ import { SocketService } from '../socket.service';
 })
 export class HomeComponent implements OnInit {
 messageList:  string[] = [];
-
+utente : string;
   constructor(private socketService: SocketService) {
   }
 

@@ -10,7 +10,7 @@ export class ApiService {
   salt: string;
   loggedin: boolean = false;
 
-  baseUrl = `https://3000-gray-gayal-u6i67giz.ws-eu03.gitpod.io/`;
+  baseUrl = `https://3000-magenta-wildcat-qmibeni5.ws-eu03.gitpod.io/`;
 
   constructor(private http: HttpClient) { }
 
