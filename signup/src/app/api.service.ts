@@ -10,7 +10,7 @@ export class ApiService {
   salt: string;
   loggedin: boolean = false;
 
-  baseUrl = `https://3000-magenta-wildcat-qmibeni5.ws-eu03.gitpod.io/`;
+  baseUrl = `https://3000-blush-rooster-56m4tz50.ws-eu03.gitpod.io/`;
 
   constructor(private http: HttpClient) { }
 
@@ -36,11 +36,11 @@ export class ApiService {
   login(username: string, password: string) {
     let url = `${this.baseUrl}login`;
     const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-    let body1 = new HttpParams();
-    body1 = body1.set('username', username);
-    body1 = body1.set('pwd', password);
+    let body = new HttpParams();
+    body = body.set('username', username);
+    body = body.set('pwd', password);
 
-    let content = this.http.post(url, body1, { headers: myheader }); // result can be "done" or "existing_user"
+    let content = this.http.post(url, body, { headers: myheader }); // result can be "done" or "existing_user"
     console.log(content);
 
     return content;
