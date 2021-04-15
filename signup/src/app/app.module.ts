@@ -9,8 +9,11 @@ import { HomeComponent } from './home/home.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { SocketService } from './socket.service';
 import { LoginComponent } from './login/login.component';
+import { ChatComponent } from './chat/chat.component';
+import { CreagruppoComponent } from './creagruppo/creagruppo.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-const config: SocketIoConfig = { url: 'https://3100-blush-rooster-56m4tz50.ws-eu03.gitpod.io', options: {} };
+const config: SocketIoConfig = { url: 'https://3100-blue-hawk-bcpdsirt.ws-eu03.gitpod.io', options: {} };
 
 
 @NgModule({
@@ -18,7 +21,9 @@ const config: SocketIoConfig = { url: 'https://3100-blush-rooster-56m4tz50.ws-eu
     AppComponent,
     RegisterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ChatComponent,
+    CreagruppoComponent
     ],
   imports: [
     BrowserModule,
@@ -27,6 +32,7 @@ const config: SocketIoConfig = { url: 'https://3100-blush-rooster-56m4tz50.ws-eu
     FormsModule,
     ReactiveFormsModule,
     SocketIoModule.forRoot(config),
+    NgbModule,
   ],
   providers: [SocketService],
   bootstrap: [AppComponent]

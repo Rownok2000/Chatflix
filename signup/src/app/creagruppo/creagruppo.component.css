@@ -1,14 +1,16 @@
-body{
-  background-color: red;
-}
-.container-fluid{
+body {
+		background-color:red;
+
+  }
+
+  .container-fluid{
 		background-color:white;
 		width:40%;
-		height:150px;
+		height:300px;
 		margin-left:15px;
 
   }
- button{
+  button{
 		background-color:lightgreen;
 
   }
