@@ -10,7 +10,7 @@ export class ApiService {
   salt: string;
   loggedin: boolean = false;
 
-  baseUrl = `https://3000-blue-hawk-bcpdsirt.ws-eu03.gitpod.io/`;
+  baseUrl = `https://3000-yellow-hummingbird-phzivfcr.ws-eu03.gitpod.io/`;
 
   constructor(private http: HttpClient) { }
 
@@ -18,9 +18,7 @@ export class ApiService {
    this.http.get('assets/salt.txt', { responseType: 'text' }).subscribe(data => this.salt = data);
   }
 
-  register(username: string, password: string) {
-    let pwd = bcrypt.hashSync(password, this.salt);
-
+  register(username: string, pwd: string) {
     let url = `${this.baseUrl}register`;
     const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     let body = new HttpParams();

@@ -15,11 +15,25 @@ router.post('/', function (req, res) {
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
         const collection = client.db("progetto").collection("users");
-        collection.find({ 'username': `${username}` }).toArray((err, result) => {
+        collection.find({'$and': [{"username": `${username}`} , {"password": `${pwd}`}]}).toArray((err, result) => {
             
-            if (err) console.log(err.message); //Se c'è qualche errore lo stampo
-            else res.send(result);
-            console.log(result);
+            if (err) 
+            {
+                console.log(err.message); //Se c'è qualche errore lo stampo
+            }
+            else 
+            {
+                console.log(result);
+                if(result.length >0 )
+                {
+                res.send({'result': result, logged:true});
+               
+                }
+                else
+                {
+                    res.send({'result': result, logged:false});
+                }
+            }
             client.close(); //Quando ho terminato la find chiudo la sessione con il db
         }); //Eseguo la query e passo una funzione di callback
 

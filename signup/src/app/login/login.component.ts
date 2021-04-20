@@ -24,26 +24,30 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     let data = this.LoginForm.value;
-
+    console.log(data);
     console.log(`Trying to log in ${data.username}...`);
 
     if ((data.username == "") || (data.username == null) || (data.password == "") || (data.password == null) ) {
       console.log('Errore! Almeno un campo è vuoto');
     } else {
       this.apiServiceObs = this.api.login(data.username, data.password);
-      this.apiServiceObs.subscribe((data) => {
-        if (data['status'] == 'done') {
-          console.log('accesso eseguito correttamente');
-        } else if (data['status'] == 'Utente non registrato'){
-          console.log('Errore! Nome utente non registrato');
-        } else {
-          console.log('Errore! Risposta non prevista dal server registrazione');
-        }
-      });
+      this.apiServiceObs.subscribe(this.checkLogin);
 
     }
 
     this.LoginForm.reset();
+  }
+
+
+  checkLogin= (data : any) =>
+  {
+
+        if (data['logged'] == 'true') {
+          console.log('accesso eseguito correttamente');
+        } else if (data['logged'] == 'false'){
+          console.log('Errore! Nome utente non registrato');
+        }
+
   }
 
 }
