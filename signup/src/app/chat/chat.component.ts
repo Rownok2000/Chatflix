@@ -9,7 +9,7 @@ import { SocketService } from '../socket.service';
 })
 export class ChatComponent implements OnInit {
 messageList:  string[] = [];
-utente : string;
+username = localStorage.getItem('token');
   constructor(private socketService: SocketService) {
   }
 

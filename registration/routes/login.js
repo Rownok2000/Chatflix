@@ -15,7 +15,7 @@ router.post('/', function (req, res) {
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
         const collection = client.db("progetto").collection("users");
-        collection.find({'$and': [{"username": `${username}`} , {"password": `${pwd}`}]}).toArray((err, result) => {
+        collection.find({"username": `${username}`}).toArray((err, result) => {
             
             if (err) 
             {
@@ -24,12 +24,12 @@ router.post('/', function (req, res) {
             else 
             {
                 console.log(result);
-                if(result.length >0 )
+                if(result.length == 1)
                 {
                 res.send({'result': result, logged:true});
                
                 }
-                else
+                else if (result.length != 1)
                 {
                     res.send({'result': result, logged:false});
                 }

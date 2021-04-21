@@ -10,7 +10,7 @@ export class ApiService {
   salt: string;
   loggedin: boolean = false;
 
-  baseUrl = `https://3000-yellow-hummingbird-phzivfcr.ws-eu03.gitpod.io/`;
+  baseUrl = `https://3000-coffee-gorilla-bads9tw1.ws-eu03.gitpod.io/`;
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,8 @@ export class ApiService {
    this.http.get('assets/salt.txt', { responseType: 'text' }).subscribe(data => this.salt = data);
   }
 
-  register(username: string, pwd: string) {
+  register(username: string, password: string) {
+    let pwd = bcrypt.hashSync(password,this.salt);
     let url = `${this.baseUrl}register`;
     const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     let body = new HttpParams();
@@ -34,11 +35,16 @@ export class ApiService {
   login(username: string, password: string) {
     let url = `${this.baseUrl}login`;
     const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
     let body = new HttpParams();
     body = body.set('username', username);
-    body = body.set('pwd', password);
-
     let content = this.http.post(url, body, { headers: myheader }); // result can be "done" or "existing_user"
+    content.subscribe((data)=>{
+      console.log(data)
+      if (bcrypt.compare(password, data[password])){
+        localStorage.setItem('token',username)
+      }
+    });
     console.log(content);
 
     return content;

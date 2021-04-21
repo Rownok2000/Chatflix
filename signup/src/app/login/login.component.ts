@@ -42,9 +42,9 @@ export class LoginComponent implements OnInit {
   checkLogin= (data : any) =>
   {
 
-        if (data['logged'] == 'true') {
+        if (data['logged'] == true) {
           console.log('accesso eseguito correttamente');
-        } else if (data['logged'] == 'false'){
+        } else if (data['logged'] == false){
           console.log('Errore! Nome utente non registrato');
         }
 
