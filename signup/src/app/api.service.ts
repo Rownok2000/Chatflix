@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import * as bcrypt from 'bcryptjs';
+import * as shajs from 'sha.js';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +10,12 @@ export class ApiService {
   salt: string;
   loggedin: boolean = false;
 
-  baseUrl = `https://3000-harlequin-bee-zb73v0fx.ws-eu03.gitpod.io/`;
+  baseUrl = `https://3000-purple-snail-tawhdzvn.ws-eu03.gitpod.io/`;
 
   constructor(private http: HttpClient) { }
 
-  getSalt(): void {
-   this.http.get('assets/salt.txt', { responseType: 'text' }).subscribe(data => this.salt = data);
-  }
-
   register(username: string, password: string) {
-    let pwd = bcrypt.hashSync(password,this.salt);
+    let pwd = shajs('sha256').update(password).digest('hex')
     let url = `${this.baseUrl}register`;
     const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     let body = new HttpParams();
@@ -27,25 +23,21 @@ export class ApiService {
     body = body.set('pwd', pwd);
 
     let content = this.http.post(url, body, { headers: myheader }); // result can be "done" or "existing_user"
-    console.log(content);
+    console.log(pwd);
 
     return content;
   }
 
   login(username: string, password: string) {
+    let pwd = shajs('sha256').update(password).digest('hex');
+    console.log(pwd);
     let url = `${this.baseUrl}login`;
     const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
     let body = new HttpParams();
     body = body.set('username', username);
+    body= body.set('password', pwd);
     let content = this.http.post(url, body, { headers: myheader }); // result can be "done" or "existing_user"
-    content.subscribe((data)=>{
-      console.log(data)
-      if (bcrypt.compare(password, data[password])){
-        localStorage.setItem('token',username)
-      }
-    });
-    console.log(content);
 
     return content;
   }

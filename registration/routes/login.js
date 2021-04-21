@@ -6,16 +6,17 @@ const MongoClient = require('mongodb').MongoClient;
 
 
 router.post('/', function (req, res) {
-    console.log(req.body);
     var username = req.body.username;
     var pwd = req.body.password;
-   
+    console.log(req.body);
+
+    console.log(pwd);
 
     const uri = 'mongodb+srv://ahasan:Registrazione@cluster0.0pydj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
         const collection = client.db("progetto").collection("users");
-        collection.find({"username": `${username}`}).toArray((err, result) => {
+        collection.find({$and:[{"username": `${username}`},{"password":`${pwd}`}]}).toArray((err, result) => {
             
             if (err) 
             {

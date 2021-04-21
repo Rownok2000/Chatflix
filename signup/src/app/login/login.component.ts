@@ -8,9 +8,9 @@ import { FormBuilder } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-    apiServiceObs: Observable<Object>;
+  apiServiceObs: Observable<Object>;
 
   LoginForm = this.formBuilder.group({
     username: '',
@@ -20,33 +20,32 @@ export class LoginComponent implements OnInit {
   constructor(
     private api: ApiService,
     private formBuilder: FormBuilder
-  ) {  }
+  ) { }
 
-  ngOnInit(): void {
+  login(): void {
     let data = this.LoginForm.value;
     console.log(data);
     console.log(`Trying to log in ${data.username}...`);
 
-    if ((data.username == "") || (data.username == null) || (data.password == "") || (data.password == null) ) {
+    if ((data.username == "") || (data.username == null) || (data.password == "") || (data.password == null)) {
       console.log('Errore! Almeno un campo è vuoto');
     } else {
       this.apiServiceObs = this.api.login(data.username, data.password);
-      this.apiServiceObs.subscribe(this.checkLogin);
-
+      this.apiServiceObs.subscribe(this.checkLogin,);
+      localStorage.setItem('token', data.username);
     }
 
     this.LoginForm.reset();
   }
 
 
-  checkLogin= (data : any) =>
-  {
+  checkLogin = (data: any) => {
 
-        if (data['logged'] == true) {
-          console.log('accesso eseguito correttamente');
-        } else if (data['logged'] == false){
-          console.log('Errore! Nome utente non registrato');
-        }
+    if (data['logged'] == true) {
+      console.log('accesso eseguito correttamente');
+    } else if (data['logged'] == false) {
+      console.log('Errore! Nome utente non registrato');
+    }
 
   }
 
