@@ -1,0 +1,14 @@
+body{
+  background-color: red;
+}
+.container-fluid{
+		background-color:white;
+		width:40%;
+		height:150px;
+		margin-left:15px;
+
+  }
+ button{
+		background-color:lightgreen;
+
+  }

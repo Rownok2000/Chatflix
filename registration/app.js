@@ -35,7 +35,7 @@ const server = app.listen(port, () => {
 });
 // Creo un oggetto socketServer sopra  il server Http
 socketServer = socketIo(server);
-
+const name = {};
 // Per ogni client connesso
 socketServer.on('connection', socket => {
     console.log('Socket: client connected');
