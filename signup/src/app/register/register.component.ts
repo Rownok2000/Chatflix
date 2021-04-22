@@ -39,6 +39,7 @@ export class RegisterComponent {
       this.apiServiceObs.subscribe((data) => {
         if (data['status'] == 'done') {
           console.log('Registrazione eseguita correttamente');
+          window.location.href = "/login";
         } else if (data['status'] == 'existing_user'){
           console.log('Errore! Nome utente già registrato');
         } else {

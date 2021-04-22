@@ -43,8 +43,9 @@ export class LoginComponent {
 
     if (data['logged'] == true) {
       console.log('accesso eseguito correttamente');
+      window.location.href = "/home";
     } else if (data['logged'] == false) {
-      console.log('Errore! Nome utente non registrato');
+      console.log('Errore! Nome utente non registrato o username/password errata');
     }
 
   }
