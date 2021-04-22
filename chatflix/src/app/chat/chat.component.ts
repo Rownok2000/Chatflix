@@ -21,8 +21,8 @@ username = localStorage.getItem('token');
   }
   ngOnInit() {
     this.socketService.getMessage()
-      .subscribe((message: string) => {
-        this.messageList.push(message);
+      .subscribe((message: any) => {
+        this.messageList.push(message.user + " :  " + message.message);
         console.log("messagereceived: " + message)
       });
   }
