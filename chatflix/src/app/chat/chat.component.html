@@ -1,6 +1,10 @@
-<input  (keyup)="$event.keyCode == 13 && sendMessage(message)" #message/>
-<button (click)="sendMessage(message)">Send Message</button>
+<div class="container-fluid">
+  <h1>Chat</h1>
+  <br><br><br><br><br><br>
+  <input  (keyup)="$event.keyCode == 13 && sendMessage(message)" #message/>
+  <button (click)="sendMessage(message)">Send Message</button>
 
-<div *ngFor = "let message of messageList">
-  {{message}}
+  <div *ngFor = "let message of messageList" div class="container-fluid">
+    {{message}}
+  </div>
 </div>
