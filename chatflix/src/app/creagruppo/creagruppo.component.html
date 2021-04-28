@@ -35,16 +35,16 @@
   <h1>creazione gruppo</h1>
   <label for="nameGroup">Nome gruppo:</label>
   <br>
-  <input type="text" id="nameGroup" name="nameGroup" maxlength="25"><br><br>
+  <input type="text" id="nameGroup" name="nameGroup" maxlength="25" #name><br><br>
   <label for="descrizione">Descrizione:</label>
   <br>
-  <textarea id="w3review" name="w3review" rows="4" cols="50" style="resize:none" maxlength="300" placeholder="max 300 caratteri"></textarea>
+  <textarea id="w3review" name="w3review" rows="4" cols="50" style="resize:none" maxlength="300" placeholder="max 300 caratteri" #desc></textarea>
   <br><br>
 
  <label for="quantity">partecipanti (min 2 max 8):</label><br>
- <input type="number" id="quantity" name="quantity" min="2" max="8">
+ <input type="number" id="quantity" name="quantity" min="2" max="8" #num>
  <br><br>
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" (click) = "onSubmit(name,desc,num)">
 
 </div>
 

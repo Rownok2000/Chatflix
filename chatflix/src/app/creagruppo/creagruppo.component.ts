@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { group } from '../group.model';
+import { GroupService } from '../group.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-creagruppo',
@@ -8,16 +10,26 @@ import { group } from '../group.model';
 })
 export class CreagruppoComponent implements OnInit {
   username = localStorage.getItem('token');
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+  grouplist : Array<group>
+  obs: Observable<Array<group>>;
+  constructor(private groupservice: GroupService) {}
 
-  /**onSubmit(nome : HTMLInputElement, desc: HTMLInputElement, )
+  ngOnInit() {
+    this.obs = this.groupservice.subscribeToSubject();
+
+   }
+
+   getnewlist = (lista : Array<group>) => {
+    this.grouplist= lista;
+   }
+
+  onSubmit(nome : HTMLInputElement, desc: HTMLInputElement, num : HTMLInputElement)
   {
-    let g : group = new group(nome.value, desc.value);
 
+    let g = new group(nome.value, desc.value, Number(num.value));
+    this.groupservice.addNewGroup(g);
 
-  }**/
+  }
 
 }

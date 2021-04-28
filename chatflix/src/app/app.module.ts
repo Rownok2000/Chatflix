@@ -12,8 +12,9 @@ import { LoginComponent } from './login/login.component';
 import { ChatComponent } from './chat/chat.component';
 import { CreagruppoComponent } from './creagruppo/creagruppo.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GroupService } from './group.service';
 
-const config: SocketIoConfig = { url: 'https://3100-peach-otter-7mq55rav.ws-eu03.gitpod.io', options: {} };
+const config: SocketIoConfig = { url: 'https://3100-purple-woodpecker-z5wnvnsf.ws-eu03.gitpod.io/', options: {} };
 
 
 @NgModule({
@@ -34,7 +35,7 @@ const config: SocketIoConfig = { url: 'https://3100-peach-otter-7mq55rav.ws-eu03
     SocketIoModule.forRoot(config),
     NgbModule,
   ],
-  providers: [SocketService],
+  providers: [SocketService, GroupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

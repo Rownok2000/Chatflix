@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GroupService } from '../group.service';
+import { Observable } from 'rxjs';
+import { group } from '../group.model';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   username = localStorage.getItem('token');
-  constructor() {}
+  obs: Observable<Array<group>>;
+  grouplist : Array<group>
+  constructor(private groupservice: GroupService) {}
 
-  ngOnInit() {  }
+  ngOnInit() {
+    this.groupservice.getGroupList();
+    this.obs = this.groupservice.subscribeToSubject();
+    this.obs.subscribe(this.getnewlist);
+   }
+
+   getnewlist = (lista : Array<group>) => {
+    this.grouplist= lista;
+    console.log(this.grouplist);
+   }
 }
 

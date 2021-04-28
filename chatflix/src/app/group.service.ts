@@ -22,15 +22,17 @@ export class GroupService {
   }
 
   getGroupList(): void {
-    this.obsGroup = this.http.get<Array<group>>('URL');
-    this.obsGroup.subscribe(this.saveGroupList);
+    //this.obsGroup = this.http.get<Array<group>>('URL');
+    //this.obsGroup.subscribe(this.saveGroupList);
   }
   saveGroupList(saveGroupList: any) {
     this.groupList = saveGroupList;
     this.subject.next(this.groupList);
   }
-  sendNewGroup(): void {
-
+  addNewGroup(newgroup : group): void {
+    this.groupList.push(newgroup);
+    this.subject.next(this.groupList);
+    console.log('ciao');
   }
 }
-}
+
