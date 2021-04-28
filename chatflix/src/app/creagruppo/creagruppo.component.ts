@@ -13,9 +13,9 @@ export class CreagruppoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /**onSubmit(nome : HtmlInputElement, desc)
+  /**onSubmit(nome : HTMLInputElement, desc: HTMLInputElement, )
   {
-    let g : group = new group(nome.value);
+    let g : group = new group(nome.value, desc.value);
 
 
   }**/
