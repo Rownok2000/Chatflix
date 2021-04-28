@@ -7,7 +7,7 @@ import { group } from '../group.model';
   styleUrls: ['./creagruppo.component.css']
 })
 export class CreagruppoComponent implements OnInit {
-
+  username = localStorage.getItem('token');
   constructor() { }
 
   ngOnInit(): void {

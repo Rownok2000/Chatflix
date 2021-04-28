@@ -1,16 +1,18 @@
 body {
-		background-color:red;
+		background-color:rgba(211, 211, 211, 0.295);
 
   }
 
   .container-fluid{
-		background-color:white;
+    background-color:white;
 		width:40%;
 		height:500px;
-		margin-left:30%;
-
+		margin-left: 30%;
+    border-radius:25px;
+    border-style: solid;
+    border-color:rgb(255, 0, 0);
   }
   button{
-		background-color:lightgreen;
-
+		background-color:rgb(222, 238, 0);
+    border-radius:15px;
   }

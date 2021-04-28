@@ -13,7 +13,7 @@ import { ChatComponent } from './chat/chat.component';
 import { CreagruppoComponent } from './creagruppo/creagruppo.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-const config: SocketIoConfig = { url: 'https://3100-azure-takin-msepmjia.ws-eu03.gitpod.io', options: {} };
+const config: SocketIoConfig = { url: 'https://3100-magenta-mandrill-ask314e0.ws-eu03.gitpod.io', options: {} };
 
 
 @NgModule({
