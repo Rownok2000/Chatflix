@@ -20,7 +20,7 @@ body {
 .searchBox {
     position: absolute;
     transform:  translate(-50%,0%);
-    background: #f50c65;
+    background: #000000;
     border-radius: 40px;
     padding: 7px;
     margin-left: 50px;
@@ -32,17 +32,17 @@ body {
 }
 
 .searchBox:hover > .searchButton {
-  background: white;
-  color : #2f3640;
+  background: rgb(255, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 .searchButton {
-    color: white;
+    color: rgb(255, 255, 255);
     float: right;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #f02eb6;
+    background: #b64e1d;
     display: flex;
     justify-content: center;
     align-items: center;
