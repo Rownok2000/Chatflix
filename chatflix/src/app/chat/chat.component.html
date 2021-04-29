@@ -21,8 +21,8 @@
 
     </div>
     <ul class="messages"></ul>
-    <div class="bottom_wrapper clearfix" >
-
+    <div *ngFor = "let message of messageList" class="bottom_wrapper clearfix" >
+              {{message}}
         <div class="message_input_wrapper">
             <input (keyup)="$event.keyCode == 13 && sendMessage(message)" #message class="message_input" placeholder="Type your message here..." />
         </div>
@@ -30,9 +30,6 @@
             <div class="icon"></div>
             <div class="text">Send</div>
         </div>
-        <div *ngFor = "let message of messageList" div class="container-fluid">
-              {{message}}
-            </div>
     </div>
 </div>
 <div class="message_template">
@@ -43,3 +40,4 @@
         </div>
     </li>
 </div>
+
