@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SocketService } from '../socket.service';
-
 
 @Component({
   selector: 'app-chat',
@@ -10,14 +9,15 @@ import { SocketService } from '../socket.service';
 export class ChatComponent implements OnInit {
 messageList:  string[] = [];
 username = localStorage.getItem('token');
+@ViewChild("scroll") scroll : any;
   constructor(private socketService: SocketService) {
   }
 
   sendMessage(message: HTMLInputElement) {
     this.socketService.sendMessage(message.value, this.username);
-
     console.log("sent: " + message.value)
     message.value="";
+    this.scroll.nativeElement.scrollTop = this.scroll.nativeElement.scrollHeight - 1;
   }
   ngOnInit() {
     this.socketService.getMessage()

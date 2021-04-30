@@ -21,7 +21,7 @@ body {
   border-radius: 10px;
   background-color: #fff;
   left: 50%;
-  top: 50%;
+  top: 60%;
   transform: translateX(-50%) translateY(-50%);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   background-color: #f8f8f8;
@@ -66,8 +66,8 @@ body {
   list-style: none;
   padding: 20px 10px 0 10px;
   margin: 0;
-  height: 347px;
-  overflow: scroll;
+  height: 330px;
+  overflow-y: scroll;
 }
 .messages .message {
   clear: both;
