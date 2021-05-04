@@ -14,7 +14,7 @@ import { CreagruppoComponent } from './creagruppo/creagruppo.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GroupService } from './group.service';
 
-const config: SocketIoConfig = { url: 'https://3100-gray-kingfisher-9pbia22e.ws-eu04.gitpod.io', options: {} };
+const config: SocketIoConfig = { url: 'https://3100-cyan-cuckoo-cg0ghdp1.ws-eu03.gitpod.io', options: {} };
 
 
 @NgModule({

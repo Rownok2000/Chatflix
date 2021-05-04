@@ -13,10 +13,11 @@ export class CreagruppoComponent implements OnInit {
 
   grouplist : Array<group>
   obs: Observable<Array<group>>;
-  constructor(private groupservice: GroupService) {}
+  constructor(private groupservice: GroupService) {
+    this.obs = this.groupservice.subscribeToSubject();
+  }
 
   ngOnInit() {
-    this.obs = this.groupservice.subscribeToSubject();
 
    }
 

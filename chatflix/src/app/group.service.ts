@@ -18,6 +18,7 @@ export class GroupService {
 
   subscribeToSubject() : Observable<Array<group>>
   {
+    console.log("sottoscritto");
     return this.subject.asObservable();
   }
 

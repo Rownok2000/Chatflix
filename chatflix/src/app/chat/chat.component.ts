@@ -17,13 +17,14 @@ username = localStorage.getItem('token');
     this.socketService.sendMessage(message.value, this.username);
     console.log("sent: " + message.value)
     message.value="";
-    this.scroll.nativeElement.scrollTop = this.scroll.nativeElement.scrollHeight;
+
   }
   ngOnInit() {
     this.socketService.getMessage()
       .subscribe((message: any) => {
         this.messageList.push(message.user + " : " + message.message);
         console.log("messagereceived: " + message)
+        this.scroll.nativeElement.scrollTop = this.scroll.nativeElement.scrollHeight;
       });
   }
 }

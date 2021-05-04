@@ -12,12 +12,14 @@ export class HomeComponent implements OnInit {
   username = localStorage.getItem('token');
   obs: Observable<Array<group>>;
   grouplist : Array<group>
-  constructor(private groupservice: GroupService) {}
-
-  ngOnInit() {
+  constructor(private groupservice: GroupService) {
     this.groupservice.getGroupList();
     this.obs = this.groupservice.subscribeToSubject();
     this.obs.subscribe(this.getnewlist);
+  }
+
+  ngOnInit() {
+
    }
 
    getnewlist = (lista : Array<group>) => {
