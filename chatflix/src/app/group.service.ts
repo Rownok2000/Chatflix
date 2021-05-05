@@ -14,7 +14,7 @@ export class GroupService {
 
   private subject = new Subject<Array<group>>();
 
-  baseUrl = `https://3000-violet-bug-5nstvae7.ws-eu03.gitpod.io/`;
+  baseUrl = `https://3000-blush-marlin-pe4or2ed.ws-eu04.gitpod.io/`;
 
   constructor(private http: HttpClient) { }
 
@@ -31,7 +31,7 @@ export class GroupService {
   }
   //fatto dal malizia
   getGroupListFromServer(): void {
-    this.obsGroup = this.http.get<Array<group>>('https://3000-violet-bug-5nstvae7.ws-eu03.gitpod.io/');
+    this.obsGroup = this.http.get<Array<group>>('https://3000-blush-marlin-pe4or2ed.ws-eu04.gitpod.io/');
     this.obsGroup.subscribe(this.saveGroupList);
   }
 
@@ -45,7 +45,7 @@ export class GroupService {
     this.subject.next(this.groupList);
     console.log('ciao');
   }
-  register(name: string, desc: string,partecipanti:number) {
+  group(name: string, desc: string, partecipanti:number) {
 
     let url = `${this.baseUrl}gruppo`;
     const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
@@ -54,7 +54,7 @@ export class GroupService {
     body = body.set('desc', desc);
     body = body.set('partecipanti', `${partecipanti}`);
     let content = this.http.post(url, body, { headers: myheader }); // result can be "done" or "existing_user"
-    console.log();
+    //console.log(body);
 
     return content;
   }

@@ -10,7 +10,7 @@ router.post('/', function(req, res) {
     var name = req.body.name;
     var desc = req.body.desc;
     var partecipanti = req.body.partecipanti;
-
+    console.log(req.body)
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
         var len;
@@ -25,7 +25,7 @@ router.post('/', function(req, res) {
                 console.log(result);
                 if(result.length == 1)
                 {
-                res.send({'result': result});
+                res.send({status: "existing_group"});
                
                 }
                 else if (result.length != 1){
@@ -34,7 +34,6 @@ router.post('/', function(req, res) {
                   if (err) throw err;
                  console.log(`gruppo ${name}registrato correttamente!`);
             });
-
             setTimeout(function () {
                 res.send({ status: "done" });
                 client.close();
@@ -42,7 +41,7 @@ router.post('/', function(req, res) {
         }
 
             }
-            client.close(); //Quando ho terminato la find chiudo la sessione con il db
+            
         }); 
      });
 });

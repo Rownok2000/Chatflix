@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class CreagruppoComponent implements OnInit {
   username = localStorage.getItem('token');
+  obsgroup: Observable<Object>;
   constructor(private groupservice: GroupService) {
   }
 
@@ -23,7 +24,16 @@ export class CreagruppoComponent implements OnInit {
 
     let g = new group(nome.value, desc.value, Number(num.value));
     this.groupservice.addNewGroup(g);
-
+    this.obsgroup = this.groupservice.group(nome.value, desc.value, Number(num.value));
+      this.obsgroup.subscribe((g) => {
+        if (g['status'] == 'done') {
+          console.log('Registrazione eseguita correttamente');
+        } else if (g['status'] == 'existing_group'){
+          console.log('Errore! Nome utente già registrato');
+        } else {
+          console.log('Errore! Risposta non prevista dal server registrazione');
+        }
+      });
   }
 
 }
