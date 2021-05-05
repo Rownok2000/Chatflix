@@ -10,20 +10,13 @@ import { Observable } from 'rxjs';
 })
 export class CreagruppoComponent implements OnInit {
   username = localStorage.getItem('token');
-
-  grouplist : Array<group>
-  obs: Observable<Array<group>>;
   constructor(private groupservice: GroupService) {
-    this.obs = this.groupservice.subscribeToSubject();
   }
 
   ngOnInit() {
 
    }
 
-   getnewlist = (lista : Array<group>) => {
-    this.grouplist= lista;
-   }
 
   onSubmit(nome : HTMLInputElement, desc: HTMLInputElement, num : HTMLInputElement)
   {

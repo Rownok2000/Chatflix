@@ -47,6 +47,7 @@ body {
   padding: 20px 10px 0 10px;
   margin: 0;
   height: 330px;
+
   overflow-y: scroll;
 }
 .bottom_wrapper {
@@ -78,7 +79,6 @@ body {
 .bottom_wrapper .send_message {
   width: 140px;
   height: 50px;
-  display: inline-block;
   border-radius: 50px;
   background-color: #a3d063;
   border: 2px solid #a3d063;

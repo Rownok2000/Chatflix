@@ -22,9 +22,15 @@ export class GroupService {
     return this.subject.asObservable();
   }
 
-  getGroupList(): void {
-    //this.obsGroup = this.http.get<Array<group>>('URL');
-    //this.obsGroup.subscribe(this.saveGroupList);
+
+  getGroupList() : Array<group>
+  {
+    return this.groupList;
+  }
+  //fatto dal malizia
+  getGroupListFromServer(): void {
+    this.obsGroup = this.http.get<Array<group>>('https://3000-violet-bug-5nstvae7.ws-eu03.gitpod.io/');
+    this.obsGroup.subscribe(this.saveGroupList);
   }
   saveGroupList(saveGroupList: any) {
     this.groupList = saveGroupList;
@@ -35,5 +41,7 @@ export class GroupService {
     this.subject.next(this.groupList);
     console.log('ciao');
   }
+
+
 }
 
