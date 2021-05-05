@@ -24,7 +24,7 @@ username = localStorage.getItem('token');
       .subscribe((message: any) => {
         this.messageList.push(message.user + " : " + message.message);
         console.log("messagereceived: " + message)
-        this.scroll.nativeElement.scrollTop = this.scroll.nativeElement.scrollHeight;
+        //this.scroll.nativeElement.scrollTop = this.scroll.nativeElement.scrollHeight;
       });
   }
 }

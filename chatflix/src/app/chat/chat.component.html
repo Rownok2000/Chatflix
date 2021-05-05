@@ -14,7 +14,7 @@
     <div class="top_menu">
         <div class="title">Chatflix</div>
     </div>
-    <div class="messages" #scroll>
+    <div class="messages" #scroll [scrollTop]='scroll.scrollHeight'>
       <div *ngFor = "let message of messageList" class="container-fluid">
         {{message}}
       </div>

@@ -8,7 +8,7 @@ const uri = 'mongodb+srv://ahasan:Registrazione@cluster0.0pydj.mongodb.net/myFir
 /* POST */
 router.post('/', function(req, res) {
     var name = req.body.name;
-     var desc = req.body.desc;
+    var desc = req.body.desc;
     var partecipanti = req.body.partecipanti;
 
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -16,21 +16,23 @@ router.post('/', function(req, res) {
         var len;
         const collection = client.db("progetto").collection("groups");
         collection.find({ 'name': `${name}` }).toArray((err, result) => {
-            if (err) console.log(err.message);
-            else {
-                len = result.length;
-                if(len == 1) {
-                    client.close();
-                    res.send({ status: "existing_user" });
-                }
+             if (err) 
+            {
+                console.log(err.message); //Se c'è qualche errore lo stampo
             }
-        });
-
-        if (len != 1) {
-            var myobj = { username: `${username}`, password: `${pwd}` };
-            collection.insertOne(myobj, function(err, res) {
-                if (err) throw err;
-                console.log(`Utente ${username}registrato correttamente!`);
+            else 
+            {
+                console.log(result);
+                if(result.length == 1)
+                {
+                res.send({'result': result});
+               
+                }
+                else if (result.length != 1){
+                   var myobj = { name: `${name}`, desc: `${desc}`, partecipanti: `${partecipanti}` };
+                     collection.insertOne(myobj, function(err, res) {
+                  if (err) throw err;
+                 console.log(`gruppo ${name}registrato correttamente!`);
             });
 
             setTimeout(function () {
@@ -38,8 +40,11 @@ router.post('/', function(req, res) {
                 client.close();
             }, 500);
         }
-    });
 
+            }
+            client.close(); //Quando ho terminato la find chiudo la sessione con il db
+        }); 
+     });
 });
 
 module.exports = router;
