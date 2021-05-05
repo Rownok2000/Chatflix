@@ -19,11 +19,9 @@ router.post('/', function(req, res) {
             else {
                 len = result.length;
                 if(len == 1) {
-                    client.close();
                     res.send({ status: "existing_user" });
                 }
             }
-        });
 
         if (len != 1) {
             var myobj = { username: `${username}`, password: `${pwd}` };
@@ -38,6 +36,7 @@ router.post('/', function(req, res) {
             }, 500);
         }
     });
+});
 
 });
 
