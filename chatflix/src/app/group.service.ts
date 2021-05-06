@@ -30,9 +30,16 @@ export class GroupService {
     return this.groupList;
   }
   //provvisorio
-  getGroupListFromServer(): void {
-    this.obsGroup = this.http.get<Array<group>>('https://3000-blush-marlin-pe4or2ed.ws-eu04.gitpod.io/');
-    this.obsGroup.subscribe(this.saveGroupList);
+  //getGroupListFromServer(): void {
+    //this.obsGroup = this.http.get<Array<group>>('https://3000-blush-marlin-pe4or2ed.ws-eu04.gitpod.io/');
+    //this.obsGroup.subscribe(this.saveGroupList);
+  //}
+
+  getGroupfromserver() {
+    const url = `${this.baseUrl}gruppo`;
+    let obsTracks = this.http.get(url);
+    console.log(obsTracks);
+    return obsTracks;
   }
 
 

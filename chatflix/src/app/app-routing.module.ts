@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ChatComponent } from './chat/chat.component';
 import { CreagruppoComponent } from './creagruppo/creagruppo.component';
+import { MieigruppiComponent } from './mieigruppi/mieigruppi.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,7 +13,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'chat', component: ChatComponent },
   { path: 'creagruppo', component: CreagruppoComponent },
+  { path: 'mieigruppi', component: MieigruppiComponent },
   { path: '',   redirectTo: '/login', pathMatch: 'full' }
+
 ];
 
 @NgModule({

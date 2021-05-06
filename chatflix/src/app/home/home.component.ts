@@ -10,7 +10,9 @@ import { group } from '../group.model';
 })
 export class HomeComponent implements OnInit {
   username = localStorage.getItem('token');
+  results: any;
   obs: Observable<Array<group>>;
+  obsgetgroup : Observable<Object>;
   grouplist : Array<group>
   subscribe : Subscription = new Subscription();
   constructor(private groupservice: GroupService) {
@@ -21,6 +23,20 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
       this.grouplist = this.groupservice.getGroupList();
+
+    this.obsgetgroup = this.groupservice.getGroupfromserver();
+    this.obsgetgroup.subscribe((data: any[]) => {
+
+      let i =0;
+      for (let d of data)
+      {
+        let g = new group(d.name, d.desc,d.partecipanti, i);
+        this.grouplist.push(g);
+
+      }
+      this.results = data; console.log(this.results);
+    });
+
    }
 
    getnewlist = (lista : Array<group>) => {

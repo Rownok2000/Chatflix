@@ -4,7 +4,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <nav class="nav nav-pills nav-justified navbar-dark ">
-  <h1 class="text-white">{{username}}</h1>
+  <h1 class="text-white">scars</h1>
 
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button routerLink="/login" type="button">logout</button>
 
@@ -37,22 +37,3 @@
     </li>
 
 </nav>
-
-<br>
-
-
-<div class="container-fluid" *ngFor="let group of grouplist">
-  <div>
-    <div class ="title">{{group.name}}&nbsp;&nbsp; <button class="btn" routerLink="/chat" type="button">Join</button></div><p>partecipanti {{group.currentNumber}}/{{group.number}}</p>
-
-    <p>{{group.desc}}</p>
-    <br>
-  </div>
-
-</div>
-
-<br><br><br><br><br>
-</div>
-
-
-

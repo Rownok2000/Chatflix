@@ -16,7 +16,6 @@ var loginRouter = require('./routes/login');
 var gruppoRouter = require('./routes/gruppo');
 
 
-
 var app = express();
 
 app.use(logger('dev'));
