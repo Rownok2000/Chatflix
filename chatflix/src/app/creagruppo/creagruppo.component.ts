@@ -22,13 +22,16 @@ export class CreagruppoComponent implements OnInit {
   onSubmit(nome : HTMLInputElement, desc: HTMLInputElement, num : HTMLInputElement)
   {
 
-    let g = new group(nome.value, desc.value, Number(num.value));
-    this.groupservice.addNewGroup(g);
-    this.obsgroup = this.groupservice.group(nome.value, desc.value, Number(num.value));
-      this.obsgroup.subscribe((g) => {
-        if (g['status'] == 'done') {
+    let g = new group(nome.value, desc.value, Number(num.value), 0);
+
+    this.obsgroup = this.groupservice.group(g);
+      this.obsgroup.subscribe((d) => {
+        if (d['status'] == 'done') {
           console.log('Registrazione eseguita correttamente');
-        } else if (g['status'] == 'existing_group'){
+        let g = new group(nome.value, desc.value, Number(num.value), 0);
+          g.currentNumber += 1
+          this.groupservice.addNewGroup(g);
+        } else if (d['status'] == 'existing_group'){
           console.log('Errore! Nome utente già registrato');
         } else {
           console.log('Errore! Risposta non prevista dal server registrazione');

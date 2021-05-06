@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit {
     console.log(this.grouplist);
    }
 
+
+
    ngOnDestroy(){
     this.subscribe.unsubscribe();
     console.log("unsub");

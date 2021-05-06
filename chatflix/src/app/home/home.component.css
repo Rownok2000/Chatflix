@@ -1,6 +1,6 @@
 .container-fluid{
 		width:40%;
-		height:160px;
+		height:fit-content;
 		margin-left:15px;
     border-radius:25px;
     border-style: solid;

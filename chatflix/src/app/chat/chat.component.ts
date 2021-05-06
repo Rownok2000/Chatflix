@@ -7,6 +7,7 @@ import { SocketService } from '../socket.service';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
+height = window.innerHeight;
 messageList:  string[] = [];
 username = localStorage.getItem('token');
 @ViewChild("scroll") scroll : any;

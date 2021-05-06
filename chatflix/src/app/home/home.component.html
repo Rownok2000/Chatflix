@@ -3,9 +3,6 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-
-<h1 class=" text-center text-danger" style="font-size:60px;"><img src="assets/img/logo.png"></h1>
-
 <nav class="nav nav-pills nav-justified navbar-dark ">
   <h1 class="text-white">{{username}}</h1>
 
@@ -45,30 +42,38 @@
 <div class="container-fluid">
   <div class ="title">Peaky Blinders&nbsp;&nbsp;<button class = "btn" routerLink="/chat" type="button">Join</button></div><p>partecipanti 0/8</p>
 
-  <textarea rows="2" cols="75">La storia ha inizio nel 1919 nella Birmingham del primo dopoguerra. La vicenda è ambientata nel quartiere di Small Heath e si focalizza sulla famiglia Shelby, il cui secondogenito Thomas è  il boss della gang detta "Peaky Blinders</textarea>
+  <p rows="2" cols="75">La storia ha inizio nel 1919 nella Birmingham del primo dopoguerra. La vicenda è ambientata nel quartiere di Small Heath e si focalizza sulla famiglia Shelby, il cui secondogenito Thomas è  il boss della gang detta "Peaky Blinders</p>
 
 </div>
 <br>
 <div class="container-fluid">
   <div class ="title">La casa di carta&nbsp;&nbsp;<button class="btn" routerLink="/chat" type="button">Join</button></div><p>partecipanti 0/8</p>
 
-  <textarea rows="2" cols="75">La storia narra gli sviluppi di una rapina estremamente ambiziosa e originale: irrompere nella Fábrica Nacional de Moneda y Timbre, a Madrid, e stampare migliaia di milioni di banconote e scappare con il bottino.</textarea>
+  <p rows="2" cols="75">La storia narra gli sviluppi di una rapina estremamente ambiziosa e originale: irrompere nella Fábrica Nacional de Moneda y Timbre, a Madrid, e stampare migliaia di milioni di banconote e scappare con il bottino.</p>
 </div>
 <br>
 <div class="container-fluid">
  <div class ="title">breaking bad&nbsp;&nbsp;  <button class="btn" routerLink="/chat">join</button></div><p>partecipanti 0/8</p>
 
-  <textarea rows="2" cols="75">Walter White è un professore di chimica, il giorno dopo il suo compleanno gli viene diagnosticato un cancro ai polmoni e in seguito al casuale incontro con Jesse Pinkman, un suo ex studente diventato uno spacciatore, Walter decide di cominciare a cucinare insieme a lui cristalli di metanfetamina.</textarea>
+  <p rows="2" cols="75">Walter White è un professore di chimica, il giorno dopo il suo compleanno gli viene diagnosticato un cancro ai polmoni e in seguito al casuale incontro con Jesse Pinkman, un suo ex studente diventato uno spacciatore, Walter decide di cominciare a cucinare insieme a lui cristalli di metanfetamina.</p>
 </div>
 <br>
 <div class="container-fluid">
   <div class ="title">Lucifer&nbsp;&nbsp; <button class="btn" routerLink="/chat" type="button">Join</button></div><p>partecipanti 0/8</p>
 
-  <textarea rows="2" cols="75">Nel 2011 Lucifer, annoiato del suo ruolo di signore degli Inferi e rancoroso nei confronti di Dio per averlo condannato a governare l'inferno, abbandona il suo regno insieme al demone Mazikeen e si trasferisce a Los Angeles dove apre un night club di nome "Lux"</textarea>
+  <p rows="2" cols="75">Nel 2011 Lucifer, annoiato del suo ruolo di signore degli Inferi e rancoroso nei confronti di Dio per averlo condannato a governare l'inferno, abbandona il suo regno insieme al demone Mazikeen e si trasferisce a Los Angeles dove apre un night club di nome "Lux"</p>
 </div>
+<br>
 
-{{grouplist|json}}
+<div class="container-fluid" *ngFor="let group of grouplist">
+  <div>
+    <div class ="title">{{group.name}}&nbsp;&nbsp; <button class="btn" routerLink="/chat" type="button">Join</button></div><p>partecipanti {{group.currentNumber}}/{{group.number}}</p>
 
+    <p rows="2" cols="75">{{group.desc}}</p>
+    <br>
+  </div>
+
+</div>
 
 <br><br><br><br><br>
 </div>
