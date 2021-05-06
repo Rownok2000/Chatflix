@@ -14,7 +14,7 @@ export class GroupService {
 
   private subject = new Subject<Array<group>>();
 
-  baseUrl = `https://3000-cyan-walrus-cihsabsy.ws-eu03.gitpod.io/`;
+  baseUrl = `https://3000-moccasin-rook-qacfszfe.ws-eu03.gitpod.io/`;
 
   constructor(private http: HttpClient) { }
 

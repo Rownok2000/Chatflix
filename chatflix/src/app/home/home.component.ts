@@ -39,6 +39,10 @@ export class HomeComponent implements OnInit {
 
    }
 
+   logout(): void {
+     localStorage.removeItem("token");
+   }
+
    getnewlist = (lista : Array<group>) => {
     this.grouplist= lista;
     console.log(this.grouplist);
