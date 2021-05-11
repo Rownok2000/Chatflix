@@ -2,30 +2,30 @@ import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { map } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
-import { group } from './group.model';
+import { Group } from './group.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class GroupService {
 
-  groupList: Array<group> = new Array<group>();
+  groupList: Array<Group> = new Array<Group>();
 
-  obsGroup: Observable<Array<group>>
+  obsGroup: Observable<Array<Group>>
 
-  private subject = new Subject<Array<group>>();
+  private subject = new Subject<Array<Group>>();
 
-  baseUrl = `https://3000-moccasin-rook-qacfszfe.ws-eu03.gitpod.io/`;
+  baseUrl = `https://3000-amber-lynx-uwybb0ro.ws-eu04.gitpod.io/`;
 
   constructor(private http: HttpClient) { }
 
-  subscribeToSubject() : Observable<Array<group>>
+  subscribeToSubject() : Observable<Array<Group>>
   {
     console.log("sottoscritto");
     return this.subject.asObservable();
   }
 
 
-  getGroupList() : Array<group>
+  getGroupList() : Array<Group>
   {
     return this.groupList;
   }
@@ -47,12 +47,12 @@ export class GroupService {
     this.groupList = saveGroupList;
     this.subject.next(this.groupList);
   }
-  addNewGroup(newgroup : group): void {
+  addNewGroup(newgroup : Group): void {
     this.groupList.push(newgroup);
     this.subject.next(this.groupList);
     console.log('ciao');
   }
-  group(newgroup : group) {
+  group(newgroup : Group) {
 
     let url = `${this.baseUrl}gruppo`;
     const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');

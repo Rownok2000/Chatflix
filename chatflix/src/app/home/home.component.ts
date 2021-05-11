@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupService } from '../group.service';
 import { Observable, Subscription } from 'rxjs';
-import { group } from '../group.model';
+import { Group } from '../group.model';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +11,9 @@ import { group } from '../group.model';
 export class HomeComponent implements OnInit {
   username = localStorage.getItem('token');
   results: any;
-  obs: Observable<Array<group>>;
+  obs: Observable<Array<Group>>;
   obsgetgroup : Observable<Object>;
-  grouplist : Array<group>
+  grouplist : Array<Group>
   subscribe : Subscription = new Subscription();
   constructor(private groupservice: GroupService) {
     this.groupservice.getGroupList();
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
       let i =0;
       for (let d of data)
       {
-        let g = new group(d.name, d.desc,d.partecipanti, i);
+        let g = new Group(d.name, d.desc,d.partecipanti, i);
         this.grouplist.push(g);
 
       }
@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
      localStorage.removeItem("token");
    }
 
-   getnewlist = (lista : Array<group>) => {
+   getnewlist = (lista : Array<Group>) => {
     this.grouplist= lista;
     console.log(this.grouplist);
    }
