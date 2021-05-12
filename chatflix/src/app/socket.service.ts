@@ -8,10 +8,20 @@ export class SocketService {
 
     constructor(private socket: Socket) { }
 
-    sendMessage(msg: string, username){
+    sendMessage(msg: string, username: string){
         this.socket.emit("new-message", {message:msg, user:username});
     }
+
+    changeGroup(groupName : string, username: string)
+    {
+       this.socket.emit("change-group", {groupName:groupName,  user:username});
+    }
+
+
      getMessage() : Observable<unknown> {
          return this.socket.fromEvent("resp-message");
+    }
+    getMessageroom() : Observable<unknown> {
+         return this.socket.fromEvent("join-message");
     }
 }

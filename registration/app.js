@@ -47,6 +47,12 @@ socketServer.on('connection', socket => {
       socketServer.emit('resp-message', message);
       console.log(message);
     });
+
+    socket.on('change-group', (message) => { 
+      socket.join(message.groupName);
+      socketServer.to(message.groupName).emit('join-message', message);
+      console.log(message);
+    });
 });
 
 module.exports = app;

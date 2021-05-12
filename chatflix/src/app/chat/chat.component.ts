@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SocketService } from '../socket.service';
-
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -11,7 +13,10 @@ height = window.innerHeight;
 messageList:  string[] = [];
 username = localStorage.getItem('token');
 @ViewChild("scroll") scroll : any;
-  constructor(private socketService: SocketService) {
+routeObs: Observable<any>;
+  constructor(private socketService: SocketService, private route: ActivatedRoute, private router: Router) {
+    this.routeObs = this.route.paramMap;
+    this.routeObs.subscribe(this.getRouterParam);
   }
 
   sendMessage(message: HTMLInputElement) {
@@ -25,7 +30,16 @@ username = localStorage.getItem('token');
       .subscribe((message: any) => {
         this.messageList.push(message.user + " : " + message.message);
         console.log("messagereceived: " + message)
-        //this.scroll.nativeElement.scrollTop = this.scroll.nativeElement.scrollHeight;
       });
+    this.socketService.getMessageroom().subscribe((message: any)=>{
+      this.messageList.push(message.user + " si è unito alla chat ");
+    })
   }
+getRouterParam = (params: ParamMap) =>{
+    let groupname = params.get('group');
+    this.socketService.changeGroup(groupname, localStorage.getItem("token"))
+    console.log (groupname);
+
+  }
+
 }

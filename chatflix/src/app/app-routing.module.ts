@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'chat', component: ChatComponent },
+  { path: 'chat/:group', component: ChatComponent },
   { path: 'creagruppo', component: CreagruppoComponent },
   { path: 'mieigruppi', component: MieigruppiComponent },
   { path: '',   redirectTo: '/login', pathMatch: 'full' }
