@@ -58,4 +58,17 @@ router.get('/', function (req, res, next) {
     });
 });
 
+router.get('/name/:name', function (req, res, next) {
+    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    name = req.params.name;
+    client.connect(err => {
+        const collection = client.db("progetto").collection("groups");
+        collection.find({ '\"name\"': `\"${name}\"` }).toArray((err, result) => {
+            if (err) console.log(err.message);
+            else { res.send(result); console.log(result); }
+            client.close();
+        });
+    });
+});
+
 module.exports = router;
