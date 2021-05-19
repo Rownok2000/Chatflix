@@ -44,7 +44,7 @@ socketServer.on('connection', socket => {
     console.log('Socket: client connected');
     //Invio il messaggio ricevuto a tutti i client
     socket.on('new-message', (message) => { 
-      socketServer.emit('resp-message', message);
+      socketServer.to(message.groupName).emit('resp-message', message);
       console.log(message);
     });
 
@@ -52,6 +52,10 @@ socketServer.on('connection', socket => {
       socket.join(message.groupName);
       socketServer.to(message.groupName).emit('join-message', message);
       console.log(message);
+    });
+    
+    socket.on('new-group-created', (group) => { 
+      socketServer.emit('new-group-created', group);
     });
 });
 

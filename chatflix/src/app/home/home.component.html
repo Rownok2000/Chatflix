@@ -1,5 +1,5 @@
-<!--<div class="image" style="background-image: url(https://www.wallpapertip.com/wmimgs/5-51173_black-and-red-background-hd.jpg);">-->
-  <div class="all">
+<div class="image" style="background-image: url(https://www.sirvisual.it/Attachment/100/7287_34538_70%20Principale.jpg);">
+  <!--<div class="all">-->
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <h1 class=" text-center text-danger" style="font-size:60px;"><img src="assets/img/logo.png"></h1>
@@ -45,7 +45,7 @@
 
 <div *ngFor="let group of grouplist">
   <div class="container-fluid">
-    <div class ="title">{{group.name}}&nbsp;&nbsp; <a class="btn" [routerLink]="['/chat', group.name]">Join</a></div><p>partecipanti {{group.currentNumber}}/{{group.number}}</p>
+    <div class ="title text-white">{{group.name}}&nbsp;&nbsp; <a class="btn" [routerLink]="['/chat', group.name]">Join</a></div><p>partecipanti {{group.currentNumber}}/{{group.number}}</p>
 
     <p>{{group.desc}}</p>
 

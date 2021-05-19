@@ -11,6 +11,7 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 export class ChatComponent implements OnInit {
 height = window.innerHeight;
 messageList:  string[] = [];
+groupname : string;
 username = localStorage.getItem('token');
 @ViewChild("scroll") scroll : any;
 routeObs: Observable<any>;
@@ -20,10 +21,11 @@ routeObs: Observable<any>;
   }
 
   sendMessage(message: HTMLInputElement) {
-    this.socketService.sendMessage(message.value, this.username);
+    if (message.value != ""){
+    this.socketService.sendMessage(message.value, this.username, this.groupname);
     console.log("sent: " + message.value)
     message.value="";
-
+    }
   }
   ngOnInit() {
     this.socketService.getMessage()
@@ -36,9 +38,9 @@ routeObs: Observable<any>;
     })
   }
 getRouterParam = (params: ParamMap) =>{
-    let groupname = params.get('group');
-    this.socketService.changeGroup(groupname, localStorage.getItem("token"))
-    console.log (groupname);
+    this.groupname = params.get('group');
+    this.socketService.changeGroup(this.groupname, localStorage.getItem("token"))
+    console.log (this.groupname);
 
   }
 

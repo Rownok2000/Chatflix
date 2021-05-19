@@ -30,12 +30,11 @@ export class HomeComponent implements OnInit {
 
     this.obsgetgroup = this.groupservice.getGroupfromserver();
     this.obsgetgroup.subscribe((data: any[]) => {
-
+      this.grouplist = [];
       let i = 0;
       for (let d of data) {
         let g = new Group(d.name, d.desc, d.partecipanti, i);
         this.grouplist.push(g);
-
       }
       this.results = data; console.log(this.results);
     });
