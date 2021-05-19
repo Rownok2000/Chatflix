@@ -29,4 +29,7 @@ export class SocketService {
     getMessageroom() : Observable<unknown> {
          return this.socket.fromEvent("join-message");
     }
+    getGroup() : Observable<unknown> {
+         return this.socket.fromEvent("newGroup");
+    }
 }

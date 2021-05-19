@@ -41,7 +41,6 @@ getRouterParam = (params: ParamMap) =>{
     this.groupname = params.get('group');
     this.socketService.changeGroup(this.groupname, localStorage.getItem("token"))
     console.log (this.groupname);
-
   }
 
 }

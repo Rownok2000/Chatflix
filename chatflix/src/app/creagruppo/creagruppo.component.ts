@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Group } from '../group.model';
 import { GroupService } from '../group.service';
 import { Observable } from 'rxjs';
+import { SocketService } from '../socket.service';
 
 @Component({
   selector: 'app-creagruppo',
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
 export class CreagruppoComponent implements OnInit {
   username = localStorage.getItem('token');
   obsgroup: Observable<Object>;
-  constructor(private groupservice: GroupService) {
+  constructor(private groupservice: GroupService, private socketService: SocketService) {
   }
 
   ngOnInit() {
@@ -25,19 +26,21 @@ export class CreagruppoComponent implements OnInit {
     let g = new Group(nome.value, desc.value, Number(num.value), 0);
 
     this.obsgroup = this.groupservice.group(g);
-      this.obsgroup.subscribe((d) => {
+    if ((nome.value != "") && (desc.value != "") && (num.value != "")){
+    this.obsgroup.subscribe((d) => {
         if (d['status'] == 'done') {
           console.log('Registrazione eseguita correttamente');
         let g = new Group(nome.value, desc.value, Number(num.value), 0);
           g.currentNumber += 1
           this.groupservice.addNewGroup(g);
           window.location.href = "/home";
+          this.socketService.newGroupcreated(g);
         } else if (d['status'] == 'existing_group'){
           console.log('Errore! Nome utente già registrato');
         } else {
           console.log('Errore! Risposta non prevista dal server registrazione');
         }
-      });
+      });}
   }
 
 }

@@ -16,37 +16,33 @@ body {
 .chat_window {
   position: absolute;
   width: calc(100% - 20px);
-  max-width: 800px;
-  height: 500px;
+  max-width: 1000px;
+  height: 700px;
   border-radius: 10px;
   background-color: #fff;
   left: 50%;
   top: 60%;
   transform: translateX(-50%) translateY(-50%);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  background-color: #f8f8f8;
+  background-color: #cfe4fc;
   overflow: hidden;
 }
 
 .top_menu {
-  background-color: #fff;
+  background-color: #da4242;
   width: 100%;
   padding: 20px 0 15px;
-  box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 30px rgb(0, 0, 0);
 }
 
-.top_menu .title {
-  text-align: center;
-  color: #bcbdc0;
-  font-size: 20px;
-}
+
 
 .messages {
   position: relative;
   list-style: none;
   padding: 20px 10px 0 10px;
   margin: 0;
-  height: 330px;
+  height: 480px;
   overflow-y: scroll;
 }
 .bottom_wrapper {
@@ -104,3 +100,17 @@ body {
 
 
 
+
+.btn {
+  border-color: #E50914;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 0 40px 40px rgb(0, 0, 0) inset, 0 0 0 0 rgb(255, 255, 255);
+  transition: all 150ms ease-in-out;
+}
+.btn:hover {
+  border-color: #3498db;
+  box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+  color: rgb(255, 255, 255);
+  border-radius: 15px;
+  background-color: #cfe4fc;
+}
