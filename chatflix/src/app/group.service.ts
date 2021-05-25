@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 import { Group } from './group.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { SocketService } from './socket.service';
 
 @Injectable()
 export class GroupService {
@@ -14,9 +15,14 @@ export class GroupService {
 
   private subject = new Subject<Array<Group>>();
 
-  baseUrl = `https://3000-coffee-raven-3dedf61e.ws-eu04.gitpod.io/`;
+  baseUrl = `https://3000-kumquat-bonobo-6s82bp7b.ws-eu07.gitpod.io/`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private socketService: SocketService) {
+    this.socketService.getGroup().subscribe((data : Group) => {
+      this.groupList.push(data);
+      console.log(data);
+    })
+   }
 
   subscribeToSubject() : Observable<Array<Group>>
   {

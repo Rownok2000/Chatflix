@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GroupService } from '../group.service';
 import { Observable, Subscription } from 'rxjs';
 import { Group } from '../group.model';
+import { SocketService } from '../socket.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
   grouplist: Array<Group>
   subscribe: Subscription = new Subscription();
 
-  constructor(private groupservice: GroupService) {
+  constructor(public groupservice: GroupService,  private socketService: SocketService) {
     this.groupservice.getGroupList();
     this.obs = this.groupservice.subscribeToSubject();
     this.subscribe = this.obs.subscribe(this.getnewlist);
@@ -38,7 +39,10 @@ export class HomeComponent implements OnInit {
       }
       this.results = data; console.log(this.results);
     });
-
+    this.socketService.getGroup().subscribe((data : Group) => {
+      this.grouplist.push(data);
+      console.log(data);
+    })
   }
 
   logout(): void {

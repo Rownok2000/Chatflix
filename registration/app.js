@@ -45,17 +45,16 @@ socketServer.on('connection', socket => {
     //Invio il messaggio ricevuto a tutti i client
     socket.on('new-message', (message) => { 
       socketServer.to(message.groupName).emit('resp-message', message);
-      console.log(message);
     });
 
     socket.on('change-group', (message) => { 
       socket.join(message.groupName);
       socketServer.to(message.groupName).emit('join-message', message);
-      console.log(message);
     });
     
     socket.on('new-group-created', (group) => { 
-      socketServer.emit('new-group-created', group);
+      socketServer.emit('newGroup', group);
+      console.log(group);
     });
 });
 
