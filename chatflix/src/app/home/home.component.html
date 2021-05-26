@@ -1,4 +1,4 @@
-<div class="image" style="background-image: url(https://www.sirvisual.it/Attachment/100/7287_34538_70%20Principale.jpg);">
+<div class="image" style="background-image: url(https://i0.wp.com/thebutlercollegian.com/wp-content/uploads/2019/03/netflix-image.jpg?w=1920&ssl=1);">
   <!--<div class="all">-->
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -45,9 +45,9 @@
 
 <div *ngFor="let group of grouplist">
   <div class="container-fluid">
-    <div class ="title text-white">{{group.name}}&nbsp;&nbsp; <a class="btn" [routerLink]="['/chat', group.name]">Join</a></div><p class="text-white">partecipanti {{group.currentNumber}}/{{group.number}}</p>
+    <div class ="title">{{group.name}}&nbsp;&nbsp; <a class="btn" [routerLink]="['/chat', group.name]">Join</a></div><p>partecipanti {{group.currentNumber}}/{{group.number}}</p>
 
-    <p class="text-white">{{group.desc}}</p>
+    <p>{{group.desc}}</p>
 
   </div>
 <br>
