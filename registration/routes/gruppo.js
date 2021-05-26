@@ -46,6 +46,21 @@ router.post('/', function(req, res) {
      });
 });
 
+router.put('/joingroup/:group/:username', function(req, res) {
+    var group = req.body.group;
+    var username = req.body.username;
+     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    client.connect(err => {
+        if (err) {
+            res.send(err);
+        }else{
+        const collection = client.db("progetto").collection("groups");
+        collection.updateOne({ 'name': `${group}`,  $push: { 'usersname': `${username}` } })
+        res.send("ok");
+        }
+    });
+});
+
 router.get('/', function (req, res, next) {
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
