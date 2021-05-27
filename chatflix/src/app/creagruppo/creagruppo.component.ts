@@ -34,7 +34,7 @@ export class CreagruppoComponent implements OnInit {
           g.currentNumber += 1
           this.groupservice.addNewGroup(g);
           this.socketService.newGroupcreated(g);
-          //window.location.href = "/home";
+          window.location.href = "/home";
         } else if (d['status'] == 'existing_group'){
           console.log('Errore! Nome utente già registrato');
         } else {

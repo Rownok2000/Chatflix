@@ -15,7 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GroupService } from './group.service';
 import { MieigruppiComponent } from './mieigruppi/mieigruppi.component';
 
-const config: SocketIoConfig = { url: 'https://3100-brown-mackerel-3nvie8e0.ws-eu07.gitpod.io', options: {} };
+const config: SocketIoConfig = { url: 'https://3100-lavender-shrimp-2fpygce6.ws-eu07.gitpod.io', options: {} };
 
 
 @NgModule({

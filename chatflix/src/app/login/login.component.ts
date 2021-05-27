@@ -46,6 +46,8 @@ export class LoginComponent {
       window.location.href = "/home";
     } else if (data['logged'] == false) {
       console.log('Errore! Nome utente non registrato o username/password errata');
+      var alertZ = document.getElementById('errormsg');
+      alertZ!.innerText ="Errore! Nome utente non registrato o username/password errata";
     }
 
   }

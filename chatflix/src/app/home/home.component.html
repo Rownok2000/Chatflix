@@ -2,13 +2,16 @@
   <!--<div class="all">-->
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <h1 class=" text-center text-danger" style="font-size:60px;"><img src="assets/img/logo.png"></h1>
 
 
-<nav class="nav nav-pills nav-justified navbar-dark ">
+
+<nav class=" nav nav-pills nav-justified navbar-dark fixed-top">
+    <h1 class=" text-center text-danger " style="font-size:60px;"><img src="assets/img/logo.png"></h1>
   <h1 class="text-white">{{username}}</h1>
 
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn" routerLink="/login" type="button" (click) = "logout()">logout</button>
+
+
+
 
 	<li class="nav-item ">
       <a class="nav-link text-white" style="font-size:25px; color: black;" routerLink="/home">Home</a>
@@ -24,6 +27,8 @@
 	<li class="nav-item ">
       <a class="nav-link text-white" style="font-size:25px; color: black;" routerLink="/mieigruppi">I miei gruppi</a>
     </li>
+
+     <li><button class="btn" routerLink="/login" type="button" (click) = "logout()">{{username}}<br>logout</button>  </li>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	 <li class="nav-item active ">
 
@@ -40,17 +45,15 @@
 
 </nav>
 
-<br>
 
 
 <div *ngFor="let group of grouplist">
-  <div class="container-fluid">
+  <div class="container-fluid ">
     <div class ="title">{{group.name}}&nbsp;&nbsp; <a class="btn" [routerLink]="['/chat', group.name]"><b>Join</b></a></div><p>partecipanti {{group.currentNumber}}/{{group.number}}</p>
 
     <p>{{group.desc}}</p>
 
   </div>
-<br>
 </div>
 
 <br><br><br><br><br>

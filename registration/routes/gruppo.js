@@ -46,17 +46,38 @@ router.post('/', function(req, res) {
      });
 });
 
-router.put('/joingroup/:group/:username', function(req, res) {
-    var group = req.body.group;
-    var username = req.body.username;
+router.get('/joingroup/:group/:username', function(req, res) {
+    var group = req.params.group;
+    var username = req.params.username;
      const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
         if (err) {
             res.send(err);
         }else{
         const collection = client.db("progetto").collection("groups");
-        collection.updateOne({ 'name': `${group}`,  $push: { 'usersname': `${username}` } })
-        res.send("ok");
+        collection.findOneAndUpdate({ 'name': `${group}`},  {$addToSet: { 'usersname': `${username}` }}, function(err,doc) {
+       if (err) { throw err; }
+       else { res.send("ok"); }
+     });
+        
+        }
+    });
+});
+
+router.get('/leavegroup/:group/:username', function(req, res) {
+    var group = req.params.group;
+    var username = req.params.username;
+     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    client.connect(err => {
+        if (err) {
+            res.send(err);
+        }else{
+        const collection = client.db("progetto").collection("groups");
+        collection.findOneAndUpdate({ 'name': `${group}`},  {$pull: { 'usersname': `${username}` }}, function(err,doc) {
+       if (err) { throw err; }
+       else { res.send("ok"); }
+     });
+        
         }
     });
 });
