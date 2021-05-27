@@ -41,6 +41,12 @@ export class MieigruppiComponent implements OnInit {
     });
   }
 
+  leaveGroup(){
+    this.groupservice.leavewithgroupandusername(this.api.groupName, this.username).subscribe((data) => {
+      console.log(data);
+    });
+  }
+
   logout(): void {
     localStorage.removeItem("token");
   }

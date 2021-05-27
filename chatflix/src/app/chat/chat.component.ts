@@ -40,12 +40,14 @@ routeObs: Observable<any>;
     this.socketService.getMessageroom().subscribe((message: any)=>{
       this.messageList.push(message.user + " si è unito alla chat ");
     });
-    this.socketService.leaveroom().subscribe((message: any)=>{
-      this.messageList.push(message.user + " ha lasciato la chat ");
-      console.log("funzia")
-    });
+
     this.groupName = this.api.groupName;
   }
+   //leaveChat(){
+     //this.socketService.leaveroom().subscribe((message: any)=>{
+      //this.messageList.push(message.user + " ha lasciato la chat ");
+    //});
+   //}
    leaveGroup(){
     this.groupservice.leavewithgroupandusername(this.api.groupName, this.username).subscribe((data) => {
       console.log(data);
@@ -54,7 +56,7 @@ routeObs: Observable<any>;
 getRouterParam = (params: ParamMap) =>{
     this.groupname = params.get('group');
     this.socketService.changeGroup(this.groupname, localStorage.getItem("token"))
-    this.socketService.leaveGroup(this.groupname, localStorage.getItem("token"))
+    //this.socketService.leaveGroup(this.groupname, localStorage.getItem("token"))
     console.log (this.groupname);
   }
 

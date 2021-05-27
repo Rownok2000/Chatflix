@@ -52,10 +52,10 @@ socketServer.on('connection', socket => {
       socketServer.to(message.groupName).emit('join-message', message);
     });
     
-    socket.on('disconnection', (message) => { 
-      socket.join(message.groupName);
-      socketServer.to(message.groupName).emit('leave-message', message);
-    });
+    //socket.on('leave-group', (message) => { 
+      //socket.leave(message.groupName);
+      //socketServer.to(message.groupName).emit('leave-message', message);
+    //});
 
     socket.on('new-group-created', (group) => { 
       socketServer.emit('newGroup', group);

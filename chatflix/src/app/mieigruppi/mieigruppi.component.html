@@ -43,7 +43,7 @@
 
 <div *ngFor="let group of grouplist">
   <div class="container-fluid ">
-    <div class ="title">{{group.name}}&nbsp;&nbsp; <a class="btn" (click)="setGroupName(group.name)" [routerLink]="['/chat', group.name]"><b>Join</b></a></div><p>partecipanti {{group.currentNumber}}/{{group.number}}</p>
+    <div class ="title">{{group.name}}&nbsp;&nbsp; <a class="btn" (click)="leaveGroup()"><b>Leave Group</b></a></div><p>partecipanti {{group.currentNumber}}/{{group.number}}</p>
 
     <p>{{group.desc}}</p>
 
