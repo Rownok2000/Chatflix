@@ -18,6 +18,11 @@ export class SocketService {
        this.socket.emit("change-group", {groupName:groupName,  user:username});
     }
 
+    leaveGroup(groupName : string, username: string)
+    {
+       this.socket.emit("leave-group", {groupName:groupName,  user:username});
+    }
+
     newGroupcreated(newgroup : Group)
     {
        this.socket.emit("new-group-created", newgroup);
@@ -28,6 +33,9 @@ export class SocketService {
     }
     getMessageroom() : Observable<unknown> {
          return this.socket.fromEvent("join-message");
+    }
+    leaveroom() : Observable<unknown> {
+         return this.socket.fromEvent("leave-message");
     }
     getGroup() : Observable<unknown> {
          return this.socket.fromEvent("newGroup");
