@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mieigruppi.component.css']
 })
 export class MieigruppiComponent implements OnInit {
-
+  username = localStorage.getItem('token');
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  logout(): void {
+    localStorage.removeItem("token");
+  }
 }

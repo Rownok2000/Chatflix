@@ -52,14 +52,11 @@ router.get('/joingroup/:group/:username', function(req, res) {
      const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
         if (err) {
-            res.send(err);
+            res.send({response:err});
         }else{
         const collection = client.db("progetto").collection("groups");
-        collection.findOneAndUpdate({ 'name': `${group}`},  {$addToSet: { 'usersname': `${username}` }}, function(err,doc) {
-       if (err) { throw err; }
-       else { res.send("ok"); }
-     });
-        
+        collection.findOneAndUpdate({ 'name': `${group}`},  {$addToSet: { 'usersname': `${username}` }});
+        res.send({response:"ok"});
         }
     });
 });

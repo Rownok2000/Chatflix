@@ -3,19 +3,22 @@ import { SocketService } from '../socket.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { ApiService } from '../api.service';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-height = window.innerHeight;
-messageList:  string[] = [];
-groupname : string;
-username = localStorage.getItem('token');
+  height = window.innerHeight;
+  messageList:  string[] = [];
+  groupname : string;
+  username = localStorage.getItem('token');
+  groupName: string = '';
+
 @ViewChild("scroll") scroll : any;
 routeObs: Observable<any>;
-  constructor(private socketService: SocketService, private route: ActivatedRoute, private router: Router) {
+  constructor(private socketService: SocketService, private route: ActivatedRoute, private router: Router, private api: ApiService) {
     this.routeObs = this.route.paramMap;
     this.routeObs.subscribe(this.getRouterParam);
   }
@@ -36,6 +39,7 @@ routeObs: Observable<any>;
     this.socketService.getMessageroom().subscribe((message: any)=>{
       this.messageList.push(message.user + " si è unito alla chat ");
     })
+    this.groupName = this.api.groupName;
   }
 getRouterParam = (params: ParamMap) =>{
     this.groupname = params.get('group');

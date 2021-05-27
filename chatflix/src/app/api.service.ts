@@ -8,7 +8,7 @@ import * as shajs from 'sha.js';
 export class ApiService {
 
   salt: string;
-  loggedin: boolean = false;
+  groupName: string = '';
 
   baseUrl = `https://3000-lavender-shrimp-2fpygce6.ws-eu07.gitpod.io/`;
 

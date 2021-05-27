@@ -38,7 +38,13 @@ h1 {
 .nav{
   background-color:black;
   vertical-align: middle;
+  /*display:inline-block;*/
 
+}
+
+.nav-item
+{
+  vertical-align: middle;
 }
 
 .searchBox {

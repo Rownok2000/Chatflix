@@ -42,5 +42,8 @@ export class CreagruppoComponent implements OnInit {
         }
       });}
   }
+  logout(): void {
+    localStorage.removeItem("token");
+  }
 
 }

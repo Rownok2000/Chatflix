@@ -3,6 +3,7 @@ import { GroupService } from '../group.service';
 import { Observable, Subscription } from 'rxjs';
 import { Group } from '../group.model';
 import { SocketService } from '../socket.service';
+import { ApiService } from '../api.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class HomeComponent implements OnInit {
   grouplist: Array<Group>
   subscribe: Subscription = new Subscription();
 
-  constructor(public groupservice: GroupService,  private socketService: SocketService) {
+  constructor(public groupservice: GroupService,  private socketService: SocketService, private api: ApiService) {
     this.groupservice.getGroupList();
     this.obs = this.groupservice.subscribeToSubject();
     this.subscribe = this.obs.subscribe(this.getnewlist);
@@ -55,6 +56,12 @@ export class HomeComponent implements OnInit {
   }
 
 
+  setGroupName(name: string){
+    this.api.groupName = name;
+    this.groupservice.joinwithgroupandusername(this.api.groupName, this.username).subscribe((data) => {
+      console.log(data);
+    });
+  }
 
 
 
@@ -62,5 +69,6 @@ export class HomeComponent implements OnInit {
     this.subscribe.unsubscribe();
     console.log("unsub");
   }
+
 }
 
