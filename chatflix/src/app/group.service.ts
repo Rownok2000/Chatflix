@@ -43,6 +43,13 @@ export class GroupService {
     return obsTracks;
   }
 
+  getmyGroupsfromserver(name : string) {
+    const url = `${this.baseUrl}gruppo/mygroups/${name}`;
+    let obsTracks = this.http.get(url);
+    console.log(obsTracks);
+    return obsTracks;
+  }
+
   joinwithgroupandusername(group: string, name: string) {
     const url = `${this.baseUrl}gruppo/joingroup/${group}/${name}`;
     let obsTracks = this.http.get(url);
@@ -51,6 +58,13 @@ export class GroupService {
     return obsTracks;
   }
 
+    leavewithgroupandusername(group: string, name: string) {
+    const url = `${this.baseUrl}gruppo/leavegroup/${group}/${name}`;
+    let obsTracks = this.http.get(url);
+    console.log(url);
+    console.log(obsTracks);
+    return obsTracks;
+  }
   saveGroupList(saveGroupList: any) {
     this.groupList = saveGroupList;
     this.subject.next(this.groupList);

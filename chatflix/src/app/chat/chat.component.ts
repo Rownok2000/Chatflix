@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { ApiService } from '../api.service';
+import { GroupService } from '../group.service';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -18,7 +19,7 @@ export class ChatComponent implements OnInit {
 
 @ViewChild("scroll") scroll : any;
 routeObs: Observable<any>;
-  constructor(private socketService: SocketService, private route: ActivatedRoute, private router: Router, private api: ApiService) {
+  constructor(public groupservice: GroupService, private socketService: SocketService, private route: ActivatedRoute, private router: Router, private api: ApiService) {
     this.routeObs = this.route.paramMap;
     this.routeObs.subscribe(this.getRouterParam);
   }
@@ -40,6 +41,11 @@ routeObs: Observable<any>;
       this.messageList.push(message.user + " si è unito alla chat ");
     })
     this.groupName = this.api.groupName;
+  }
+   leaveGroup(){
+    this.groupservice.leavewithgroupandusername(this.api.groupName, this.username).subscribe((data) => {
+      console.log(data);
+    });
   }
 getRouterParam = (params: ParamMap) =>{
     this.groupname = params.get('group');

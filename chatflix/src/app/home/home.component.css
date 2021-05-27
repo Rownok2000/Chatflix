@@ -8,7 +8,7 @@
     background:white;
     color:black;
     opacity: 0.8;
-    margin-top: 65px;
+    margin-top: 88px;
   }
 /*.all {
   background-color: #2c3e50;
@@ -37,14 +37,14 @@ h1 {
 
 .nav{
   background-color:black;
-  vertical-align: middle;
-  /*display:inline-block;*/
 
 }
 
 .nav-item
 {
   vertical-align: middle;
+  padding-top: 20px;
+  margin-bottom: -20px;
 }
 
 .searchBox {

@@ -70,12 +70,22 @@ router.get('/leavegroup/:group/:username', function(req, res) {
             res.send(err);
         }else{
         const collection = client.db("progetto").collection("groups");
-        collection.findOneAndUpdate({ 'name': `${group}`},  {$pull: { 'usersname': `${username}` }}, function(err,doc) {
-       if (err) { throw err; }
-       else { res.send("ok"); }
-     });
-        
+        collection.findOneAndUpdate({ 'name': `${group}`},  {$pull: { 'usersname': `${username}` }});
+        res.send({response:"ok"});
         }
+    });
+});
+
+router.get('/mygroups/:username', function (req, res, next) {
+    var username = req.params.username;
+    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    client.connect(err => {
+        const collection = client.db("progetto").collection("groups");
+        collection.find({'usersname': {$in: [`${username}`]}}).toArray((err, result) => {
+            if (err) console.log(err.message);
+            else { res.send(result); }
+            client.close();
+        });
     });
 });
 

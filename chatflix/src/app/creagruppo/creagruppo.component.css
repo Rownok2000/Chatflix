@@ -11,6 +11,12 @@
   background-color:black;
   margin-top: -8px;
 }
+.nav-item
+{
+  vertical-align: middle;
+  padding-top: 20px;
+  margin-bottom: -20px;
+}
 
 .searchBox {
     position: absolute;
@@ -64,8 +70,17 @@
     padding: 0 6px;
 }
 }
- button{
-		background-color:lightgreen;
-    border-radius:15px;
-  }
 
+.btn {
+  border-color: #E50914;
+  color: rgb(0, 0, 0);
+  box-shadow: 0 0 40px 40px #E50914 inset, 0 0 0 0 #E50914;
+  transition: all 150ms ease-in-out;
+}
+
+.btn:hover {
+  border-color: #3498db;
+  box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+  color: rgb(255, 0, 0);
+  border-radius: 15px;
+}

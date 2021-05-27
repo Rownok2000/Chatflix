@@ -89,9 +89,6 @@
   line-height: 48px;
 }
 
-.message_template {
-  display: none;
-}
 
 
 
@@ -105,7 +102,11 @@
 .btn:hover {
   border-color: #3498db;
   box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   border-radius: 15px;
-  background-color: #cfe4fc;
+  background-color: rgb(50, 80, 97);
+}
+
+.nomegruppo{
+  text-align: center;
 }
