@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SocketService } from '../socket.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -15,9 +15,7 @@ export class ChatComponent implements OnInit {
   messageList:  string[] = [];
   groupname : string;
   username = localStorage.getItem('token');
-  groupName: string = '';
 
-@ViewChild("scroll") scroll : any;
 routeObs: Observable<any>;
   constructor(public groupservice: GroupService, private socketService: SocketService, private route: ActivatedRoute, private router: Router, private api: ApiService) {
     this.routeObs = this.route.paramMap;
@@ -41,7 +39,7 @@ routeObs: Observable<any>;
       this.messageList.push(message.user + " si è unito alla chat ");
     });
 
-    this.groupName = this.api.groupName;
+
   }
    //leaveChat(){
      //this.socketService.leaveroom().subscribe((message: any)=>{
