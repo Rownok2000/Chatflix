@@ -49,7 +49,7 @@ router.post('/', function(req, res) {
 router.get('/joingroup/:group/:username', function(req, res) {
     var group = req.params.group;
     var username = req.params.username;
-     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
         if (err) {
             res.send({response:err});

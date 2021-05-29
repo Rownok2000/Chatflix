@@ -10,7 +10,7 @@ export class ApiService {
   salt: string;
   groupName: string = '';
 
-  baseUrl = `https://3000-indigo-worm-nmrvn6yl.ws-eu08.gitpod.io/`;
+  baseUrl = `https://3000-fuchsia-hedgehog-91jkzsp7.ws-eu08.gitpod.io/`;
 
   constructor(private http: HttpClient) { }
 
@@ -41,4 +41,18 @@ export class ApiService {
 
     return content;
   }
+
+  sendMessage(groupname: string, message: string) {
+    message = `${localStorage.getItem('token')}~${message}`;
+    const url = `${this.baseUrl}chat/addMessage/${groupname}/${message}`;
+    let obsTracks = this.http.get(url);
+    return obsTracks;
+  }
+
+  getChatArchive(groupname: string) {
+    const url = `${this.baseUrl}chat/get/${groupname}`;
+    let obsTracks = this.http.get(url);
+    return obsTracks;
+  }
+
 }

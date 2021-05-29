@@ -16,7 +16,7 @@ export class ChatComponent implements OnInit {
   groupname : string;
   username = localStorage.getItem('token');
 
-routeObs: Observable<any>;
+  routeObs: Observable<any>;
   constructor(public groupservice: GroupService, private socketService: SocketService, private route: ActivatedRoute, private router: Router, private api: ApiService) {
     this.routeObs = this.route.paramMap;
     this.routeObs.subscribe(this.getRouterParam);
@@ -24,22 +24,33 @@ routeObs: Observable<any>;
 
   sendMessage(message: HTMLInputElement) {
     if (message.value != ""){
-    this.socketService.sendMessage(message.value, this.username, this.groupname);
-    console.log("sent: " + message.value)
-    message.value="";
+      this.api.sendMessage(this.groupname, message.value).subscribe((data) => {
+        console.log('Message saved on DB');
+      });
+      this.socketService.sendMessage(message.value, this.username, this.groupname);
+      console.log("sent: " + message.value)
+      message.value="";
     }
   }
   ngOnInit() {
+    this.socketService.getMessageroom().subscribe((message: any)=>{
+      this.messageList.push(message.user + " si è unito alla chat ");
+    });
+
+    this.api.getChatArchive(this.groupname).subscribe((data) => {
+      let chat = data[0]['chat'];
+      for(let i in chat){
+        this.messageList.push(chat[i].split('~')[0] + " : " + chat[i].split('~')[1]);
+      }
+    });
+
     this.socketService.getMessage()
       .subscribe((message: any) => {
         this.messageList.push(message.user + " : " + message.message);
         console.log("messagereceived: " + message)
       });
-    this.socketService.getMessageroom().subscribe((message: any)=>{
-      this.messageList.push(message.user + " si è unito alla chat ");
-    });
 
-
+    this.api.groupName = this.groupname;
   }
    //leaveChat(){
      //this.socketService.leaveroom().subscribe((message: any)=>{
