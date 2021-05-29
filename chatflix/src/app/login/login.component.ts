@@ -29,6 +29,7 @@ export class LoginComponent {
 
     if ((data.username == "") || (data.username == null) || (data.password == "") || (data.password == null)) {
       console.log('Errore! Almeno un campo è vuoto');
+      alert("Errore! Almeno un campo è vuoto");
     } else {
       this.apiServiceObs = this.api.login(data.username, data.password);
       this.apiServiceObs.subscribe(this.checkLogin,);
@@ -46,8 +47,7 @@ export class LoginComponent {
       window.location.href = "/home";
     } else if (data['logged'] == false) {
       console.log('Errore! Nome utente non registrato o username/password errata');
-      var alertZ = document.getElementById('errormsg');
-      alertZ!.innerText ="Errore! Nome utente non registrato o username/password errata";
+      alert("Errore! Nome utente non registrato o username/password errata");
     }
 
   }

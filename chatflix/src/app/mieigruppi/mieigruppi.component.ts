@@ -4,12 +4,19 @@ import { Group } from '../group.model';
 import { Observable } from 'rxjs';
 import { ApiService } from '../api.service';
 
+interface Alert {
+  type: string;
+  message: string;
+}
+const ALERTS: Alert = {type: 'info', message: "In questa sezione puoi vedere i gruppi a cui ti sei iscritto" };
+
 @Component({
   selector: 'app-mieigruppi',
   templateUrl: './mieigruppi.component.html',
   styleUrls: ['./mieigruppi.component.css']
 })
 export class MieigruppiComponent implements OnInit {
+  alert: Alert;
   getnewlist(getnewlist: any): any {
     throw new Error("Method not implemented.");
   }
@@ -23,7 +30,15 @@ export class MieigruppiComponent implements OnInit {
     this.groupservice.getGroupList();
     this.obs = this.groupservice.subscribeToSubject();
     this.subscribe = this.obs.subscribe(this.getnewlist);
+    this.reset();
+  }
 
+    close(alert: Alert) {
+    (this.alert, 1);
+  }
+
+  reset() {
+    this.alert = ALERTS;
   }
 
   ngOnInit() {

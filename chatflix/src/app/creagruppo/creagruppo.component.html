@@ -39,9 +39,7 @@
     </li>
 
 </nav>
-
-<br>
-<br><br><br>
+<ngb-alert class="alert" [type]="alert.type" (closed)="close(alert)">{{ alert.message }}</ngb-alert>
 <div class="container-fluid">
 
   <h1>creazione gruppo</h1>

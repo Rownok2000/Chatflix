@@ -12,6 +12,9 @@
     border-style: solid;
     border-color:rgb(255, 0, 0);
   }
+.alert{
+  margin-top: 15px;
+}
 .nav{
   background-color:black;
 }

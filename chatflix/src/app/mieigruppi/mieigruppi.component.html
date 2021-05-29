@@ -40,7 +40,7 @@
     </li>
 
 </nav>
-
+<ngb-alert [type]="alert.type" (closed)="close(alert)">{{ alert.message }}</ngb-alert>
 <div *ngFor="let group of grouplist">
   <div class="container-fluid ">
     <div class ="title">{{group.name}}&nbsp;&nbsp; <a class="btn" (click)="leaveGroup()"><b>Leave Group</b></a></div><p>partecipanti {{group.currentNumber}}/{{group.number}}</p>

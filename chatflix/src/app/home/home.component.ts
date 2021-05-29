@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     this.socketService.getGroup().subscribe((data : Group) => {
       this.grouplist.push(data);
       console.log(data);
-    })
+    });
   }
 
 
