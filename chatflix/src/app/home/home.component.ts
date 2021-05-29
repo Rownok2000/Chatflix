@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
+
   logout(): void {
     localStorage.removeItem("token");
   }

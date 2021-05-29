@@ -1,3 +1,8 @@
+  .image{
+  margin-top: 70px;
+  height: 90vh;
+  overflow: auto;
+}
   .container-fluid{
     background-color:white;
 		width:40%;

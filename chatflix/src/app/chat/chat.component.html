@@ -17,7 +17,7 @@
 
     </div>
     <div class="messages" #scroll [scrollTop]='scroll.scrollHeight'>
-      <div *ngFor = "let message of messageList" class="container-fluid">
+      <div *ngFor = "let message of messageList" class="container">
         <h4>{{message}}</h4>
       </div>
     </div>
@@ -39,3 +39,4 @@
         </div>
     </li>
 </div>
+
