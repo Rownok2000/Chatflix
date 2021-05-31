@@ -6,6 +6,24 @@
 }
 
 
+.client-chat {
+    width: 60%;
+    word-wrap: break-word;
+    background-color: #4f5d73c7;
+    padding: 7px 10px;
+    border-radius: 10px 10px 10px 0;
+    margin: 10px 0;
+}
+
+.my-chat {
+    width: 60%;
+    word-wrap: break-word;
+    background-color: #77b3d4c7;
+    padding: 7px 10px;
+    border-radius: 10px 10px 0 10px;
+    margin: 5px 0 5px auto;
+}
+
 .chat_window {
   position: absolute;
   width: calc(100% - 20px);

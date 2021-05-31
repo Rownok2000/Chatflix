@@ -17,9 +17,20 @@
 
     </div>
     <div class="messages" #scroll [scrollTop]='scroll.scrollHeight'>
-      <div *ngFor = "let message of messageList" class="container">
-        <h4>{{message}}</h4>
+      <div *ngFor = "let message of messageList" class="container">{{message}}</div>
+<!--      <div class="my-chat">
+        <h4>Daniele : avete visto la scenda quando Tommy ha sparato all'ispettore?</h4>
       </div>
+      <div class="client-chat">
+        <h4>Alessio : si ho visto quella scena mi è piaciuta molto</h4>
+      </div>
+      <div class="my-chat">
+        <h4>Daniele : Ahasan te cosa ne pensi ?</h4>
+      </div>
+      <div class="client-chat">
+        <h4>Ahasan : Sono rimasto molto sorpreso perchè non me l'aspettavo</h4>
+      </div>
+    -->
     </div>
     <div class="bottom_wrapper clearfix">
         <div class="message_input_wrapper">

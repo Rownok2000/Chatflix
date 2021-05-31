@@ -15,7 +15,7 @@ export class GroupService {
 
   private subject = new Subject<Array<Group>>();
 
-  baseUrl = `https://3000-amber-quelea-gr0fehb9.ws-eu08.gitpod.io/`;
+  baseUrl = `https://3000-cyan-cat-w2jp6t6q.ws-eu08.gitpod.io/`;
 
   constructor(private http: HttpClient, private socketService: SocketService) {
     this.socketService.getGroup().subscribe((data : Group) => {
