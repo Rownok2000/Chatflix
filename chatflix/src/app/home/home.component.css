@@ -15,15 +15,13 @@
     opacity: 0.8;
     margin-top: 10px;
   }
-/*.all {
-  background-color: #2c3e50;
-}*/
 
 h1 {
   background-color: black;
 }
 
 .btn {
+  font-weight: bold;
   border-color: #E50914;
   color: rgb(0, 0, 0);
   box-shadow: 0 0 40px 40px #E50914 inset, 0 0 0 0 #E50914;
@@ -42,7 +40,6 @@ h1 {
 
 .nav{
   background-color:black;
-
 }
 
 .nav-item
@@ -51,7 +48,7 @@ h1 {
   padding-top: 20px;
   margin-bottom: -20px;
 }
-
+/*
 .searchBox {
     position: absolute;
     transform:  translate(-50%,0%);
@@ -105,3 +102,4 @@ h1 {
     padding: 0 6px;
 }
 }
+*/

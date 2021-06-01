@@ -10,7 +10,7 @@ export class ApiService {
   salt: string;
   groupName: string = '';
 
-  baseUrl = `https://3000-cyan-cat-w2jp6t6q.ws-eu08.gitpod.io/`;
+  baseUrl = `https://3000-lime-tern-q6jyna1n.ws-eu08.gitpod.io/`;
 
   constructor(private http: HttpClient) { }
 
