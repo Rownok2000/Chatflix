@@ -1,14 +1,3 @@
-<!--<div class="container-fluid">
-  <h1>Chat</h1>
-  <br><br><br><br><br><br>
-  <input  (keyup)="$event.keyCode == 13 && sendMessage(message)" #message/>
-  <button (click)="sendMessage(message)">Send Message</button>
-
-  <div *ngFor = "let message of messageList" div class="container-fluid">
-    {{message}}
-  </div>
-</div>-->
-
 <div class="chat_window">
     <div class="top_menu">
       <a class="btn" routerLink="/home"><b>back</b></a><a class="btn" (click)="leaveGroup()" routerLink="/home"><b>leave Group</b></a>
@@ -17,7 +6,11 @@
 
     </div>
     <div class="messages" #scroll [scrollTop]='scroll.scrollHeight'>
-      <div *ngFor = "let message of messageList" class="container">{{message}}</div>
+      <div *ngFor = "let msg of messageList">
+        <li [ngClass]="{'client-chat': lastmessage.user != username, 'my-chat': lastmessage.user == username}">
+          {{lastmessage.user}}
+          {{msg}}</li>
+      </div>
 <!--      <div class="my-chat">
         <h4>Daniele : avete visto la scenda quando Tommy ha sparato all'ispettore?</h4>
       </div>

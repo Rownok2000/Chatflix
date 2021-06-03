@@ -15,7 +15,7 @@ export class ChatComponent implements OnInit {
   messageList:  string[] = [];
   groupname : string;
   username = localStorage.getItem('token');
-
+ lastmessage;
   routeObs: Observable<any>;
   constructor(public groupservice: GroupService, private socketService: SocketService, private route: ActivatedRoute, private router: Router, private api: ApiService) {
     this.routeObs = this.route.paramMap;
@@ -40,6 +40,7 @@ export class ChatComponent implements OnInit {
     this.api.getChatArchive(this.groupname).subscribe((data) => {
       let chat = data[0]['chat'];
       for(let i in chat){
+        console.log(chat);
         this.messageList.push(chat[i].split('~')[0] + " : " + chat[i].split('~')[1]);
       }
     });
@@ -47,6 +48,7 @@ export class ChatComponent implements OnInit {
     this.socketService.getMessage()
       .subscribe((message: any) => {
         this.messageList.push(message.user + " : " + message.message);
+        this.lastmessage = message;
         console.log("messagereceived: " + message)
       });
 
