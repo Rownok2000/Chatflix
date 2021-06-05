@@ -10,7 +10,7 @@ export class ApiService {
   salt: string;
   groupName: string = '';
 
-  baseUrl = `https://3000-silver-alligator-mc076ido.ws-eu08.gitpod.io/`;
+  baseUrl = `https://chatflixservernode.netlify.app/.netlify/functions/api/`;
 
   constructor(private http: HttpClient) { }
 
