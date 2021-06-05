@@ -3,6 +3,8 @@ import { Group } from '../group.model';
 import { GroupService } from '../group.service';
 import { Observable } from 'rxjs';
 import { SocketService } from '../socket.service';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 interface Alert {
   type: string;
@@ -20,7 +22,7 @@ export class CreagruppoComponent implements OnInit {
 
   username = localStorage.getItem('token');
   obsgroup: Observable<Object>;
-  constructor(private groupservice: GroupService, private socketService: SocketService) {
+  constructor(private groupservice: GroupService, private socketService: SocketService, private router: Router, private route: ActivatedRoute) {
     this.reset();
   }
 
@@ -52,7 +54,7 @@ export class CreagruppoComponent implements OnInit {
           this.groupservice.joinwithgroupandusername(nome.value, this.username).subscribe((data) => {
             console.log(data);
           });
-          window.location.href = "/home";
+          this.router.navigate([`../home`], { relativeTo: this.route });
         } else if (d['status'] == 'existing_group'){
           console.log('Errore! gruppo già esistente');
           alert("Errore! Gruppo già esistente");

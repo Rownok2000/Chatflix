@@ -11,7 +11,6 @@ import { GroupService } from '../group.service';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-  height = window.innerHeight;
   messageList:  string[] = [];
   groupname : string;
   username = localStorage.getItem('token');
