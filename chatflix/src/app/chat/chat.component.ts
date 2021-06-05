@@ -14,7 +14,7 @@ export class ChatComponent implements OnInit {
   messageList:  string[] = [];
   groupname : string;
   username = localStorage.getItem('token');
- lastmessage;
+  lastmessage;
   routeObs: Observable<any>;
   constructor(public groupservice: GroupService, private socketService: SocketService, private route: ActivatedRoute, private router: Router, private api: ApiService) {
     this.routeObs = this.route.paramMap;

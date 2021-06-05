@@ -15,7 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GroupService } from './group.service';
 import { MieigruppiComponent } from './mieigruppi/mieigruppi.component';
 
-const config: SocketIoConfig = { url: 'https://3100-silver-alligator-mc076ido.ws-eu08.gitpod.io', options: {} };
+const config: SocketIoConfig = { url: 'https://chatsocket-server.netlify.app', options: {} };
 
 
 @NgModule({
