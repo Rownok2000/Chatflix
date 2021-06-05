@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from '../api.service';
 import { FormBuilder } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,9 @@ export class LoginComponent {
 
   constructor(
     private api: ApiService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   login(): void {
@@ -44,7 +47,7 @@ export class LoginComponent {
 
     if (data['logged'] == true) {
       console.log('accesso eseguito correttamente');
-      window.location.href = "https://60bbd45ff1b7810008a77e2f--chatflixma.netlify.app/home";
+      this.router.navigate([`../home`], { relativeTo: this.route });
     } else if (data['logged'] == false) {
       console.log('Errore! Nome utente non registrato o username/password errata');
       alert("Errore! Nome utente non registrato o username/password errata");
