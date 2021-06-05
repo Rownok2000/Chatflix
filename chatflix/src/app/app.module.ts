@@ -15,7 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GroupService } from './group.service';
 import { MieigruppiComponent } from './mieigruppi/mieigruppi.component';
 
-const config: SocketIoConfig = { url: 'https://chatsocket-server.netlify.app/.netlify/functions/api', options: {} };
+const config: SocketIoConfig = { url: 'https://60bbe4dd0e51d20007d50cf9--chatsocket-server.netlify.app/.netlify/functions/api', options: {} };
 
 
 @NgModule({
