@@ -44,7 +44,7 @@ export class LoginComponent {
 
     if (data['logged'] == true) {
       console.log('accesso eseguito correttamente');
-      window.location.href = "/home";
+      window.location.href = "https://60bbd45ff1b7810008a77e2f--chatflixma.netlify.app/home";
     } else if (data['logged'] == false) {
       console.log('Errore! Nome utente non registrato o username/password errata');
       alert("Errore! Nome utente non registrato o username/password errata");
